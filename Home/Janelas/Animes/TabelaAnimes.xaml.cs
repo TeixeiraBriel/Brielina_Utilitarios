@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Input;
+using System;
+using System.Windows.Media.Imaging;
 
 namespace Home.Janelas.Animes
 {
@@ -45,9 +47,9 @@ namespace Home.Janelas.Animes
                 StackPanel novaLinha = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 5, 0, 0) };
 
                 StackPanel painelFunc = new StackPanel { Margin = new Thickness(0, 0, 5, 0) , Cursor = Cursors.Hand};
-
-                var deleteIcon = new ImageSourceConverter().ConvertFromString("./Dados/imgs/deleteIcon.png") as ImageSource;
-                var editIcon = new ImageSourceConverter().ConvertFromString("./Dados/imgs/editIcon.png") as ImageSource;
+                
+                var deleteIcon = (BitmapImage)Application.Current.FindResource("IconDeletar");
+                var editIcon = (BitmapImage)Application.Current.FindResource("IconEditar");
 
                 Image ImageEdit = new Image() { Height = 20, Margin = new Thickness(0, 0, 0, 5) , Cursor = Cursors.Hand};
                 ImageEdit.Source = editIcon;

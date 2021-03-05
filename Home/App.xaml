@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Home"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <BitmapImage x:Key="IconDeletar" UriSource="Dados\imgs\deleteIcon.png"></BitmapImage>
+            <BitmapImage x:Key="IconEditar" UriSource="Dados\imgs\editIcon.png"></BitmapImage>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
