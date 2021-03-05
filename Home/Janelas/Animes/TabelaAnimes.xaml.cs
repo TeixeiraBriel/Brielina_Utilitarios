@@ -23,7 +23,10 @@ namespace Home.Janelas.Animes
         {
             InitializeComponent();
             _controlador = new Controlador();
-            JanelaPrincipal = janelaPrincipal;
+            if (janelaPrincipal != null)
+            {
+                JanelaPrincipal = janelaPrincipal;
+            }
             atualizarTabela();
         }
 
