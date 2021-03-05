@@ -15,7 +15,10 @@
                 <StackPanel x:Name="painelPrincipal">
                 </StackPanel>
             </ScrollViewer>
-            <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Right" VerticalAlignment="Center" Width="80" Height="30" Margin="0,10,50,2" Click="Voltar"/>                
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,60,0">
+                <Button x:Name="btnVoltar" Content="Voltar" Width="80" Height="30" Click="Voltar"/>
+                <Button x:Name="btnCadastrar" Content="Novo" Width="80" Height="30" Margin="5,0,0,0" Click="cadastrarAnime"/>
+            </StackPanel>          
         </StackPanel>
     </Grid>
 </Page>

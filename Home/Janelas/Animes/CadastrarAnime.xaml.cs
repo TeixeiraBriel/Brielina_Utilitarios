@@ -11,18 +11,26 @@ namespace Home.Janelas.Animes
     public partial class CadastrarAnime : Page
     {
         private MainWindow JanelaPrincipal;
+        private Page Anterior;
 
-        public CadastrarAnime(MainWindow janelaPrincipal)
+        public CadastrarAnime(MainWindow janelaPrincipal = null, Page anterior = null)
         {
             InitializeComponent();
             JanelaPrincipal = janelaPrincipal;
+            Anterior = anterior;
         }
 
         private void Voltar(object sender, RoutedEventArgs e)
         {
-            var destino = new Inicio(JanelaPrincipal);
-
-            this.NavigationService.Navigate(destino);
+            if (Anterior != null)
+            {
+            this.NavigationService.Navigate(Anterior);
+            }
+            else
+            {
+                var destino = new Inicio(JanelaPrincipal);
+                this.NavigationService.Navigate(destino);
+            }
         }
 
         private void cadastrarAnime(object sender, RoutedEventArgs e)

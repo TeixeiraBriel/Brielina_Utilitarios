@@ -22,6 +22,17 @@ namespace Animes
             IRestResponse response = client.Execute(request);
         }
 
+        public void EditarAnime(Anime entrada)
+        {
+            var client = new RestClient("http://localhost:54830/api/animes/" + entrada.Id);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Content-Type", "application/json");
+            string param = JsonConvert.SerializeObject(entrada);
+            request.AddParameter("application/json", param, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+        }
+
         public List<Anime> buscarAnimes()
         {
             var client = new RestClient("http://localhost:54830/api/animes/");

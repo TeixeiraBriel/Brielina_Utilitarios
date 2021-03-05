@@ -123,5 +123,12 @@ namespace Home.Janelas.Animes
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+        private void cadastrarAnime(object sender, RoutedEventArgs e)
+        {
+            var destino = new CadastrarAnime(null ,this);
+
+            this.NavigationService.Navigate(destino);
+        }
     }
 }
