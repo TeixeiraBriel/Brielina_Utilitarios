@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Home"
         mc:Ignorable="d"
-        Title="Brielina Utilitarios" Height="450" Width="800">
+        Title="Brielina Utilitarios" Height="450" Width="800" ResizeMode="CanMinimize">
     <Frame x:Name="janelaPrincipal" NavigationUIVisibility="Hidden">
         
     </Frame>
