@@ -1,4 +1,5 @@
 ﻿using Animes;
+using BrielinaUtilitarios.Janelas;
 using Home.Janelas;
 using System.Reflection.Emit;
 using System.Windows;
@@ -18,10 +19,8 @@ namespace Home
         {
             InitializeComponent();
 
-            var inicio = new Inicio(this);
-
+            Aplicativos inicio = new Aplicativos();
             this.janelaPrincipal.NavigationService.Navigate(inicio);
-
             verificaApi();
         }
 
@@ -37,7 +36,19 @@ namespace Home
                 DragMove();
             }
         }
-        
+
+        private void clicaStatusApi(object sender, MouseButtonEventArgs e)
+        {
+            verificaApi();
+        }
+
+        private void NavegarInicio(object sender, RoutedEventArgs e)
+        {
+            Aplicativos inicio = new Aplicativos();
+
+            this.janelaPrincipal.NavigationService.Navigate(inicio);
+        }
+
         public void verificaApi()
         {
             Mouse.OverrideCursor = Cursors.Wait;
@@ -68,11 +79,6 @@ namespace Home
             {
                 Mouse.OverrideCursor = null;
             }
-        }
-
-        private void clicaStatusApi(object sender, MouseButtonEventArgs e)
-        {
-            verificaApi();
         }
     }
 }

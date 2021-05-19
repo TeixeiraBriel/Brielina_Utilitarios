@@ -100,7 +100,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Janelas\Inicio.xaml">
+    <Page Include="Janelas\Aplicativos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Animes\Inicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,7 +132,10 @@
     <Compile Include="Janelas\Animes\TabelaAnimes.xaml.cs">
       <DependentUpon>TabelaAnimes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\Inicio.xaml.cs">
+    <Compile Include="Janelas\Aplicativos.xaml.cs">
+      <DependentUpon>Aplicativos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Animes\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Rascunho.xaml.cs">
