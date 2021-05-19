@@ -58,6 +58,8 @@
             </Button>
 
             <Label Grid.Column="9" Foreground="White" Content="{DynamicResource Versao}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+
+            <Label x:Name="statusApiLabel" Grid.Column="8" Foreground="White" Content="Status API: " VerticalAlignment="Bottom" HorizontalAlignment="Right" MouseLeftButtonDown ="clicaStatusApi" Cursor="Hand"/>
             
             <Button Content="Fechar" 
                 Grid.Column="10" 

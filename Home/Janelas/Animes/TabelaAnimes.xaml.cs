@@ -42,6 +42,12 @@ namespace Home.Janelas.Animes
         public void atualizarTabela()
         {
             List<Anime> Animes = _controlador.buscarAnimes();
+
+            if (Animes == null)
+            {
+                return;
+            }
+
             foreach (var anime in Animes)
             {
                 StackPanel novaLinha = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 5, 0, 0) };
