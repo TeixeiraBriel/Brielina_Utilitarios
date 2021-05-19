@@ -29,7 +29,7 @@ namespace Home.Janelas
         {
             var destino = new TabelaAnimes(JanelaPrincipal);
 
-            this.NavigationService.Navigate(destino);
+            this.NavigationService.Navigate(destino); 
         }
     }
 }
