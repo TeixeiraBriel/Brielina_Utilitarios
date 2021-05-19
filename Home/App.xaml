@@ -6,6 +6,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
+            <!--VERSÂO-->
+            <System:String x:Key="Versao">Versão 2.0.1</System:String>
+            <!--VERSÂO-->
+            
             <BitmapImage x:Key="IconDeletar" UriSource="Dados\imgs\deleteIcon.png"/>
             <BitmapImage x:Key="IconEditar" UriSource="Dados\imgs\editIcon.png"/>
             <System:Double x:Key="WidthTotal">1366</System:Double>

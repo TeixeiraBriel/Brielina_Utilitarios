@@ -57,6 +57,8 @@
                 </Button.Template>
             </Button>
 
+            <Label Grid.Column="9" Foreground="White" Content="{DynamicResource Versao}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            
             <Button Content="Fechar" 
                 Grid.Column="10" 
                 HorizontalAlignment="Center" 
