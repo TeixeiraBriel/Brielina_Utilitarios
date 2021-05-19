@@ -1,5 +1,6 @@
 ﻿using Home.Janelas;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Home
 {
@@ -15,6 +16,19 @@ namespace Home
             var inicio = new Inicio(this);
 
             this.janelaPrincipal.NavigationService.Navigate(inicio);
+        }
+
+        private void FecharPrograma(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MoverTela(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

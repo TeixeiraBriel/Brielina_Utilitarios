@@ -5,8 +5,101 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Home"
         mc:Ignorable="d"
-        Title="Brielina Utilitarios" Height="450" Width="800" ResizeMode="CanMinimize">
-    <Frame x:Name="janelaPrincipal" NavigationUIVisibility="Hidden">
-        
-    </Frame>
+        Title="Brielina Utilitarios" Height="{DynamicResource HeightTotal}" Width="{DynamicResource WidthTotal}" ResizeMode="NoResize" WindowStyle="None">
+    <!--<Frame x:Name="janelaPrincipal" NavigationUIVisibility="Hidden" Margin="0,68,0,0"/>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MouseDown="MoverTela">
+            <Grid.Background>
+                <SolidColorBrush Color="#FF36455D"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Brielina Utilitarios" 
+                MouseDown="MoverTela"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" >
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FFEEEEEE"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="20"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Fechar" 
+                Grid.Column="10" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="100" Click="FecharPrograma" >
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FFEEEEEE"/>
+                        <Setter Property="Foreground" Value="#FF936C6C"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="20"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="#FFF4F4F4"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame x:Name="janelaPrincipal" Grid.Column="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
 </Window>

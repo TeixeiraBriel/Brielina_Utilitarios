@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Home.Janelas.Animes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
       Title="TabelaAnimes">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" MinWidth="300" MinHeight="300" Height="450" Width="800">
+        <StackPanel HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" MinWidth="300" MinHeight="300" Height="{DynamicResource HeightFrame}" Width="{DynamicResource WidthFrame}">
             <TextBlock FontSize="50" FontWeight="Medium" FontFamily="Helvetica" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Lista Animes" VerticalAlignment="Center"/>
-            <ScrollViewer Margin="50,0" Height="304" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer Margin="50,0" Height="562" HorizontalScrollBarVisibility="Auto">
                 <StackPanel x:Name="painelPrincipal">
                 </StackPanel>
             </ScrollViewer>
