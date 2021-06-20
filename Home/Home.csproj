@@ -108,6 +108,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Janelas\ControladorFinanceiro\contasFinanceiroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ControladorFinanceiro\dadosFinanceiroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ControladorFinanceiro\entradaFinanceiroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ControladorFinanceiro\inicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\ControladorFinanceiro\saidaFinanceiroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Janelas\Rascunho.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +157,21 @@
     </Compile>
     <Compile Include="Janelas\Animes\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ControladorFinanceiro\contasFinanceiroView.xaml.cs">
+      <DependentUpon>contasFinanceiroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ControladorFinanceiro\dadosFinanceiroView.xaml.cs">
+      <DependentUpon>dadosFinanceiroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ControladorFinanceiro\entradaFinanceiroView.xaml.cs">
+      <DependentUpon>entradaFinanceiroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ControladorFinanceiro\inicio.xaml.cs">
+      <DependentUpon>inicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\ControladorFinanceiro\saidaFinanceiroView.xaml.cs">
+      <DependentUpon>saidaFinanceiroView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Rascunho.xaml.cs">
       <DependentUpon>Rascunho.xaml</DependentUpon>
