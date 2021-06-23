@@ -9,6 +9,27 @@
       Title="contasFinanceiroView">
 
     <Grid>
-        <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="contas" FontSize="30" BorderBrush="{x:Null}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="Clientes" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Name="nome">
+                <TextBlock Text="Nome" FontWeight="Bold"/>
+                <Rectangle Fill="Black" Height="2" Stroke="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Name="valorConta">
+                <TextBlock Text="Valor Contido" Grid.Column="0" FontWeight="Bold"/>
+                <Rectangle Fill="Black" Height="2" Stroke="Black"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

@@ -32,5 +32,12 @@ namespace BrielinaUtilitarios.Janelas
 
             this.NavigationService.Navigate(AnimeInicio);
         }
+
+        private void FinanceiroApp(object sender, RoutedEventArgs e)
+        {
+            ControladorFinanceiro.inicio FinanceiroInicio = new ControladorFinanceiro.inicio();
+
+            this.NavigationService.Navigate(FinanceiroInicio);
+        }
     }
 }
