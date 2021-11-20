@@ -1,6 +1,8 @@
 ﻿using Animes;
 using BrielinaUtilitarios.Janelas;
 using Home.Janelas;
+using System;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Windows;
 using System.Windows.Input;
@@ -19,6 +21,11 @@ namespace Home
         {
             InitializeComponent();
 
+            if (nomeUsuario.Content == "Usuario")
+            {
+                nomeUsuario.Content = "Usuario: Geral";
+            }
+            txtVersao.Content = System.Windows.Forms.Application.ProductVersion;
             Aplicativos inicio = new Aplicativos();
             this.janelaPrincipal.NavigationService.Navigate(inicio);
             verificaApi();

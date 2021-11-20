@@ -11,9 +11,10 @@ namespace Animes
 {
     public class Controlador
     {
+        string UrlBrielinaApi = "http://25.82.74.248:8080/api/";
         public void cadastroAnimes(Anime entrada)
         {
-            var client = new RestClient("http://localhost:54830/api/animes/");
+            var client = new RestClient(UrlBrielinaApi + "animes/");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -24,7 +25,7 @@ namespace Animes
 
         public void EditarAnime(Anime entrada)
         {
-            var client = new RestClient("http://localhost:54830/api/animes/" + entrada.Id);
+            var client = new RestClient(UrlBrielinaApi + "animes/" + entrada.Id);
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Content-Type", "application/json");
@@ -35,7 +36,7 @@ namespace Animes
 
         public List<Anime> buscarAnimes()
         {
-            var client = new RestClient("http://localhost:54830/api/animes/");
+            var client = new RestClient(UrlBrielinaApi + "animes/");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -46,7 +47,7 @@ namespace Animes
 
         public Anime buscarAnime(int id)
         {
-            var client = new RestClient("http://localhost:54830/api/animes/" + id);
+            var client = new RestClient(UrlBrielinaApi + "animes/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -58,7 +59,7 @@ namespace Animes
 
         public void deleteAnime(int id)
         {
-            var client = new RestClient("http://localhost:54830/api/animes/" + id);
+            var client = new RestClient(UrlBrielinaApi + "animes/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
