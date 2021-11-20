@@ -3,17 +3,20 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animes
+namespace Home.Controladores
 {
     public class Controlador
     {
+        private string _UrlBrielinaApi = ConfigurationManager.AppSettings["UrlBrielinaApi"];
+
         public void cadastroAnimes(Anime entrada)
         {
-            var client = new RestClient(UrlBrielinaApi + "animes/");
+            var client = new RestClient(_UrlBrielinaApi + "animes/");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -24,7 +27,7 @@ namespace Animes
 
         public void EditarAnime(Anime entrada)
         {
-            var client = new RestClient(UrlBrielinaApi + "animes/" + entrada.Id);
+            var client = new RestClient(_UrlBrielinaApi + "animes/" + entrada.Id);
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Content-Type", "application/json");
@@ -35,7 +38,7 @@ namespace Animes
 
         public List<Anime> buscarAnimes()
         {
-            var client = new RestClient(UrlBrielinaApi + "animes/");
+            var client = new RestClient(_UrlBrielinaApi + "animes/");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -46,7 +49,7 @@ namespace Animes
 
         public Anime buscarAnime(int id)
         {
-            var client = new RestClient(UrlBrielinaApi + "animes/" + id);
+            var client = new RestClient(_UrlBrielinaApi + "animes/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -58,7 +61,7 @@ namespace Animes
 
         public void deleteAnime(int id)
         {
-            var client = new RestClient(UrlBrielinaApi + "animes/" + id);
+            var client = new RestClient(_UrlBrielinaApi + "animes/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
