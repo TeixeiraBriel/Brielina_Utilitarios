@@ -39,5 +39,12 @@ namespace BrielinaUtilitarios.Janelas
 
             this.NavigationService.Navigate(FinanceiroInicio);
         }
+
+        private void SteamJogosApp(object sender, RoutedEventArgs e)
+        {
+            SteamJogos.Inicio SteamJogosInicio = new SteamJogos.Inicio();
+
+            this.NavigationService.Navigate(SteamJogosInicio);
+        }
     }
 }
