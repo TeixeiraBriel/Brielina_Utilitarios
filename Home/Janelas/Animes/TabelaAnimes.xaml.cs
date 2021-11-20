@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Home.Controladores;
+using System;
 
 namespace Home.Janelas.Animes
 {
@@ -19,10 +20,13 @@ namespace Home.Janelas.Animes
     {
         private MainWindow JanelaPrincipal;
         private ControladorAnimes _controlador;
+        private List<Tuple<StackPanel, int>> linhas;
+        List<Anime> Animes;
 
         public TabelaAnimes(MainWindow janelaPrincipal = null)
         {
             InitializeComponent();
+            linhas = new List<Tuple<StackPanel, int>>();
             _controlador = new ControladorAnimes();
             if (janelaPrincipal != null)
             {
@@ -38,9 +42,9 @@ namespace Home.Janelas.Animes
             this.NavigationService.Navigate(destino);
         }
 
-        public void atualizarTabela()
+        public async void atualizarTabela()
         {
-            List<Anime> Animes = _controlador.buscarAnimes();
+            Animes = _controlador.buscarAnimes();
 
             if (Animes == null)
             {
@@ -89,13 +93,15 @@ namespace Home.Janelas.Animes
                 imgAnime.Source = img;
 
                 StackPanel painelDados = new StackPanel { Margin = new Thickness(5, 0, 0, 0) };
-                TextBlock[] campos = new TextBlock[6];
+                TextBlock[] campos = new TextBlock[7];
+                string finalizada = anime.Finalizada == 0 ? "Não" : "Sim";
                 campos[0] = new TextBlock{ Text = "Nome: " + anime.Nome };
                 campos[1] = new TextBlock{ Text = "Episodios: " + anime.Episodios };
                 campos[2] = new TextBlock{ Text = "Generos: " + anime.Generos };
                 campos[3] = new TextBlock{ Text = "Completo: " + anime.Completo };
                 campos[4] = new TextBlock{ Text = "Dia Lançamento: " + anime.DiaLancamento };
                 campos[5] = new TextBlock{ Text = "Link: "};
+                campos[6] = new TextBlock{ Text = "Finalizado: " + finalizada };
 
                 if (!string.IsNullOrEmpty(anime.Link))
                 {
@@ -119,7 +125,26 @@ namespace Home.Janelas.Animes
                 novaLinha.Children.Add(imgAnime);
                 novaLinha.Children.Add(painelDados);
 
-                painelPrincipal.Children.Add(novaLinha);
+
+
+                linhas.Add(new Tuple<StackPanel, int>(novaLinha, anime.Id));
+            }
+            AtualizarTela();
+        }
+
+        private void AtualizarTela()
+        {
+            painelPrincipal.Children.Clear();
+            foreach (var linha in linhas)
+            {
+                if (radioMostrarFinalizadoTrue.IsChecked == true)
+                {
+                    painelPrincipal.Children.Add(linha.Item1);
+                }
+                else if (radioMostrarFinalizadoTrue.IsChecked == false && Animes.Find(x => x.Id == linha.Item2).Finalizada == 0)
+                {
+                    painelPrincipal.Children.Add(linha.Item1);
+                }
             }
         }
 
@@ -134,6 +159,11 @@ namespace Home.Janelas.Animes
             var destino = new CadastrarAnime(null ,this);
 
             this.NavigationService.Navigate(destino);
+        }
+
+        private void validaCheck(object sender, RoutedEventArgs e)
+        {
+            AtualizarTela();
         }
     }
 }

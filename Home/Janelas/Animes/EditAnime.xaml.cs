@@ -36,6 +36,17 @@ namespace Home.Janelas.Animes
             inputLink.Text = animeEditar.Link;
             inputLinkImage.Text = animeEditar.LinkImage;
             inputDiaSemana.Text = animeEditar.DiaLancamento;
+            if (animeEditar.Finalizada == 0)
+            {
+                radioFinalizadoTrue.IsChecked = false;
+                radioFinalizadoFalse.IsChecked = true;                
+            }
+            else
+            {
+                radioFinalizadoTrue.IsChecked = true;
+                radioFinalizadoFalse.IsChecked = false;
+            }
+
         }
         private void Voltar(object sender, RoutedEventArgs e)
         {
@@ -52,6 +63,7 @@ namespace Home.Janelas.Animes
             animeEditar.Link = inputLink.Text;
             animeEditar.LinkImage = inputLinkImage.Text;
             animeEditar.DiaLancamento = inputDiaSemana.Text;
+            animeEditar.Finalizada = radioFinalizadoTrue.IsChecked == true ? 1 : 0;
 
             x.EditarAnime(animeEditar);
 

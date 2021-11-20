@@ -45,6 +45,7 @@ namespace Home.Janelas.Animes
             novoAnime.Link = inputLink.Text;
             novoAnime.LinkImage = inputLinkImage.Text;
             novoAnime.DiaLancamento = inputDiaSemana.Text;
+            novoAnime.Finalizada = radioFinalizadoTrue.IsChecked == true ? 1 : 0;
 
             x.cadastroAnimes(novoAnime);
 
@@ -55,6 +56,7 @@ namespace Home.Janelas.Animes
             inputLink.Text = null;
             inputLinkImage.Text = null;
             inputDiaSemana.Text = null;
+            radioFinalizadoTrue.IsChecked = false;
 
             TabelaAnimes anterior = new TabelaAnimes();
 

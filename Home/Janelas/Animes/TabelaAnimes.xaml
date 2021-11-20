@@ -11,6 +11,11 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" MinWidth="300" MinHeight="300" Height="{DynamicResource HeightFrame}" Width="{DynamicResource WidthFrame}">
             <TextBlock FontSize="50" FontWeight="Medium" FontFamily="Helvetica" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Lista Animes" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock FontSize="12" FontWeight="Medium" FontFamily="Helvetica" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Mostrar Animes Finalizados? " VerticalAlignment="Center"/>
+                <RadioButton GroupName="radioMostrarFinalizadoGroup" Content="Sim" Name="radioMostrarFinalizadoTrue" Checked="validaCheck" Unchecked="validaCheck"/>
+                <RadioButton GroupName="radioMostrarFinalizadoGroup" Content="Nao" Name="radioMostrarFinalizadoFalse" IsChecked="True"/>
+            </StackPanel>
             <ScrollViewer Margin="50,0" Height="562" HorizontalScrollBarVisibility="Auto">
                 <StackPanel x:Name="painelPrincipal">
                 </StackPanel>
