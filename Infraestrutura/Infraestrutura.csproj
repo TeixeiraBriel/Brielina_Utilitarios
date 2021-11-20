@@ -50,7 +50,8 @@
   <ItemGroup>
     <Compile Include="ConnectionString.cs" />
     <Compile Include="Entidades\Anime.cs" />
-    <Compile Include="Entidades\ContaFinanceiro.cs" />
+    <Compile Include="Entidades\MediaGastos.cs" />
+    <Compile Include="Entidades\registro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

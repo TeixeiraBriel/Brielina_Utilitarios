@@ -1,4 +1,4 @@
-﻿using Animes;
+﻿using Home.Controladores;
 using Infraestrutura.Entidades;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,7 +35,7 @@ namespace Home.Janelas.Animes
 
         private void cadastrarAnime(object sender, RoutedEventArgs e)
         {
-            Controlador x = new Controlador();
+            ControladorAnimes x = new ControladorAnimes();
 
             Anime novoAnime = new Anime();
             novoAnime.Nome = inputNome.Text;

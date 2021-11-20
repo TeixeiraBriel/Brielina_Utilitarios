@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BrielinaUtilitarios.Janelas.ControladorFinanceiro
+namespace BrielinaUtilitarios.Janelas.Financeiro
 {
     /// <summary>
-    /// Interação lógica para entradaFinanceiroView.xam
+    /// Interação lógica para CadastroEntrada.xam
     /// </summary>
-    public partial class entradaFinanceiroView : Page
+    public partial class CadastroEntrada : Page
     {
-        public entradaFinanceiroView()
+        public CadastroEntrada()
         {
             InitializeComponent();
         }

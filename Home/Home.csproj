@@ -125,25 +125,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Janelas\ControladorFinanceiro\contasFinanceiroView.xaml">
+    <Page Include="Janelas\Financeiro\CadastroDeGasto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Janelas\Financeiro\CadastroEntrada.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Janelas\Financeiro\inicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Janelas\ControladorFinanceiro\dadosFinanceiroView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Janelas\Financeiro\TabelaEntrada.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Janelas\ControladorFinanceiro\entradaFinanceiroView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Janelas\Financeiro\TabelaGastos.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Janelas\ControladorFinanceiro\inicio.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Janelas\ControladorFinanceiro\saidaFinanceiroView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Janelas\Rascunho.xaml">
       <SubType>Designer</SubType>
@@ -158,6 +158,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controladores\Controlador%28Animes%29.cs" />
+    <Compile Include="Controladores\Controlador%28Financeiro%29.cs" />
+    <Compile Include="Controladores\Controlador.cs" />
     <Compile Include="Janelas\Animes\CadastrarAnime.xaml.cs">
       <DependentUpon>CadastrarAnime.xaml</DependentUpon>
     </Compile>
@@ -176,20 +178,20 @@
     <Compile Include="Janelas\Animes\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\ControladorFinanceiro\contasFinanceiroView.xaml.cs">
-      <DependentUpon>contasFinanceiroView.xaml</DependentUpon>
+    <Compile Include="Janelas\Financeiro\CadastroDeGasto.xaml.cs">
+      <DependentUpon>CadastroDeGasto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\ControladorFinanceiro\dadosFinanceiroView.xaml.cs">
-      <DependentUpon>dadosFinanceiroView.xaml</DependentUpon>
+    <Compile Include="Janelas\Financeiro\CadastroEntrada.xaml.cs">
+      <DependentUpon>CadastroEntrada.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\ControladorFinanceiro\entradaFinanceiroView.xaml.cs">
-      <DependentUpon>entradaFinanceiroView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Janelas\ControladorFinanceiro\inicio.xaml.cs">
+    <Compile Include="Janelas\Financeiro\inicio.xaml.cs">
       <DependentUpon>inicio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\ControladorFinanceiro\saidaFinanceiroView.xaml.cs">
-      <DependentUpon>saidaFinanceiroView.xaml</DependentUpon>
+    <Compile Include="Janelas\Financeiro\TabelaEntrada.xaml.cs">
+      <DependentUpon>TabelaEntrada.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Financeiro\TabelaGastos.xaml.cs">
+      <DependentUpon>TabelaGastos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Rascunho.xaml.cs">
       <DependentUpon>Rascunho.xaml</DependentUpon>

@@ -1,19 +1,7 @@
-﻿using Animes;
+﻿using Home.Controladores;
 using Infraestrutura.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Home.Janelas.Animes
 {
@@ -23,14 +11,14 @@ namespace Home.Janelas.Animes
     public partial class EditAnime : Page
     {
         private Page JanelaAnterior;
-        private Controlador _controlador;
+        private ControladorAnimes _controlador;
         private int Id;
         private Anime animeEditar;
 
         public EditAnime(Page janelaAnterior, int id)
         {
             InitializeComponent();
-            _controlador = new Controlador();
+            _controlador = new ControladorAnimes();
             JanelaAnterior = janelaAnterior;
             Id = id;
             carregarAnime(id);
@@ -56,7 +44,7 @@ namespace Home.Janelas.Animes
 
         private void EditarAnime(object sender, RoutedEventArgs e)
         {
-            Controlador x = new Controlador();
+            ControladorAnimes x = new ControladorAnimes();
 
             animeEditar.Episodios = inputEpisodios.Text == "" ? 0 : int.Parse(inputEpisodios.Text);
             animeEditar.Generos = inputGeneros.Text;

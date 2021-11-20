@@ -1,9 +1,5 @@
-﻿using Animes;
-using BrielinaUtilitarios.Janelas;
-using Home.Janelas;
-using System;
-using System.Reflection;
-using System.Reflection.Emit;
+﻿using BrielinaUtilitarios.Janelas;
+using Home.Controladores;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,7 +11,7 @@ namespace Home
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Controlador _controlador = new Controlador();
+        private ControladorAnimes _controlador = new ControladorAnimes();
 
         public MainWindow()
         {

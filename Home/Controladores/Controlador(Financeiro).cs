@@ -1,19 +1,22 @@
-﻿using BrielinaUtilitarios.Controladores;
-using Infraestrutura.Entidades;
+﻿using BrielinaFinanceiro.Entidades;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Home.Controladores
+namespace BrielinaUtilitarios.Controladores
 {
-    public class ControladorAnimes : Controlador
+    public class ControladorFinanceiro : Controlador
     {
         private string _UrlBrielinaApi = ConfigurationManager.AppSettings["UrlBrielinaApi"];
 
-        public void cadastroAnimes(Anime entrada)
+        public void cadastroRegistro(Registro entrada)
         {
-            var client = new RestClient(_UrlBrielinaApi + "animes/");
+            var client = new RestClient(_UrlBrielinaApi + "Financeiro/");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -22,9 +25,9 @@ namespace Home.Controladores
             IRestResponse response = client.Execute(request);
         }
 
-        public void EditarAnime(Anime entrada)
+        public void EditarRegistro(Registro entrada)
         {
-            var client = new RestClient(_UrlBrielinaApi + "animes/" + entrada.Id);
+            var client = new RestClient(_UrlBrielinaApi + "Financeiro/" + entrada.Id);
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Content-Type", "application/json");
@@ -33,32 +36,32 @@ namespace Home.Controladores
             IRestResponse response = client.Execute(request);
         }
 
-        public List<Anime> buscarAnimes()
+        public List<Registro> buscarRegistros()
         {
-            var client = new RestClient(_UrlBrielinaApi + "animes/");
+            var client = new RestClient(_UrlBrielinaApi + "Financeiro/");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
 
-            List<Anime> Animes = JsonConvert.DeserializeObject<List<Anime>>(response.Content);
-            return Animes;
+            List<Registro> registros = JsonConvert.DeserializeObject<List<Registro>>(response.Content);
+            return registros;
         }
 
-        public Anime buscarAnime(int id)
+        public Registro buscarRegistro(int id)
         {
-            var client = new RestClient(_UrlBrielinaApi + "animes/" + id);
+            var client = new RestClient(_UrlBrielinaApi + "Financeiro/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
 
-            Anime Anime = JsonConvert.DeserializeObject<Anime>(response.Content);
+            Registro registro = JsonConvert.DeserializeObject<Registro>(response.Content);
 
-            return Anime;
+            return registro;
         }
 
-        public void deleteAnime(int id)
+        public void deleteRegistro(int id)
         {
-            var client = new RestClient(_UrlBrielinaApi + "animes/" + id);
+            var client = new RestClient(_UrlBrielinaApi + "Financeiro/" + id);
             client.Timeout = -1;
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);

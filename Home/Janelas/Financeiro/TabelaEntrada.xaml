@@ -1,0 +1,30 @@
+﻿<Page x:Class="BrielinaUtilitarios.Janelas.Financeiro.TabelaEntrada"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrielinaFinanceiro"
+      mc:Ignorable="d" 
+      d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
+      Title="TabelaEntrada">
+
+    <Grid>
+        <StackPanel Margin="50,0,0,0">
+            <TextBlock Text="Tabela de entrada" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Filtros ..." FontSize="16" Margin="20,0,0,0" />
+                <ComboBox Text="Não sei" HorizontalAlignment="Left" Margin="7,0,0,0" Width="100">
+                    <ComboBoxItem Content="item"/>
+                    <ComboBoxItem Content="item2"/>
+                </ComboBox>
+            </StackPanel>
+            <DataGrid x:Name="DataGridEntrada" Width="700" Height="330" Margin="0,10,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header ="Descrição" Width="*" Binding="{Binding Descricao}"/>
+                    <DataGridTextColumn Header="Valor" Width="150" Binding="{Binding Valor}"/>
+                    <DataGridTextColumn Header="Data" Width="150" Binding="{Binding Data}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

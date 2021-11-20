@@ -1,5 +1,4 @@
-﻿using Animes;
-using Infraestrutura.Entidades;
+﻿using Infraestrutura.Entidades;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,8 +7,8 @@ using System.Windows.Navigation;
 using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Input;
-using System;
 using System.Windows.Media.Imaging;
+using Home.Controladores;
 
 namespace Home.Janelas.Animes
 {
@@ -19,12 +18,12 @@ namespace Home.Janelas.Animes
     public partial class TabelaAnimes : Page
     {
         private MainWindow JanelaPrincipal;
-        private Controlador _controlador;
+        private ControladorAnimes _controlador;
 
         public TabelaAnimes(MainWindow janelaPrincipal = null)
         {
             InitializeComponent();
-            _controlador = new Controlador();
+            _controlador = new ControladorAnimes();
             if (janelaPrincipal != null)
             {
                 JanelaPrincipal = janelaPrincipal;

@@ -1,0 +1,33 @@
+﻿<Page x:Class="BrielinaUtilitarios.Janelas.Financeiro.inicio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrielinaUtilitarios.Janelas.Financeiro"
+      mc:Ignorable="d" 
+      d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
+      Title="inicio">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Cadastro Gastos" FontSize="30" BorderBrush="{x:Null}" Click="navegaCadastroGastos"/>
+                <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Cadastro Entrada" FontSize="30" BorderBrush="{x:Null}" Click="navegaCadastroEntrada"/>
+                <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Tabela Entrada" FontSize="30" BorderBrush="{x:Null}" Click="navegaTabelaEntrada"/>
+                <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Tabela Saida" FontSize="30" BorderBrush="{x:Null}" Click="navegaTabelaSaida"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Button Margin="155,360,495,0" Content="Registrar Gastos" Width="150" Height="30"/>
+                <DataGrid x:Name="DataGridMedias" HorizontalAlignment="Right" Height="400" Width="400" Margin="0,0,10,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header ="Tipo" Width="80" Binding="{Binding Tipo}"/>
+                        <DataGridTextColumn Header="Nome" Width="100" Binding="{Binding Nome}"/>
+                        <DataGridTextColumn Header="Valor Media" Width="*" Binding="{Binding ValorDaMedia}"/>
+                        <DataGridTextColumn Header="Media" Width="*" Binding="{Binding Media}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
