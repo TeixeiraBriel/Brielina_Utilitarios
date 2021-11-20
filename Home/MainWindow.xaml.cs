@@ -21,7 +21,7 @@ namespace Home
         {
             InitializeComponent();
 
-            if (nomeUsuario.Content == "Usuario")
+            if (nomeUsuario.Content.ToString() == "Usuario")
             {
                 nomeUsuario.Content = "Usuario: Geral";
             }
