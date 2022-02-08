@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BrielinaFinanceiro"
+      xmlns:local="clr-namespace:BrielinaUtilitarios"
       mc:Ignorable="d" 
       d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
       Title="CadastroDeGasto">
@@ -17,7 +17,7 @@
         <TextBlock HorizontalAlignment="Center" Text="Novo Gasto" Margin="12,12,0,0" FontSize="30" FontWeight="bold" Foreground="Red"/>
 
 
-        <StackPanel Grid.Row="1"  Margin="100,0,0,0">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <TextBlock x:Name="Aviso" HorizontalAlignment="Center" Text="Não foi possivel realizar o cadastro, favor validar os campos." Margin="0,0,0,10" FontSize="10" FontWeight="bold" Foreground="Red" Visibility="Collapsed"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Descricao: " Grid.Column=" 1"/>
@@ -64,7 +64,10 @@
                 <TextBlock Text="Data Vencimento: "/>
                 <TextBox x:Name="txtDataVencimento" Width="100"/>
             </StackPanel>
-            <Button Content="Cadastrar" Width="100" HorizontalAlignment="Left" Margin="0,5,0,0" Click="CadastrarGasto"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Cadastrar" Width="100" HorizontalAlignment="Left" Margin="0,5,5,0" Click="CadastrarGasto"/>
+                <Button Content="Voltar" Width="100" HorizontalAlignment="Left" Margin="0,5,0,0" Click="funcVoltar"/>
+            </StackPanel>
 
         </StackPanel>
     </Grid>

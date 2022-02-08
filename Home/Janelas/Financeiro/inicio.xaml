@@ -16,17 +16,32 @@
                 <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Tabela Entrada" FontSize="30" BorderBrush="{x:Null}" Click="navegaTabelaEntrada"/>
                 <Button Background="Black" Height="50" Margin="10,10" Foreground="White" Content="Tabela Saida" FontSize="30" BorderBrush="{x:Null}" Click="navegaTabelaSaida"/>
             </StackPanel>
-            
-            <StackPanel>
-                <Button Margin="155,360,495,0" Content="Registrar Gastos" Width="150" Height="30"/>
-                <DataGrid x:Name="DataGridMedias" HorizontalAlignment="Right" Height="400" Width="400" Margin="0,0,10,0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header ="Tipo" Width="80" Binding="{Binding Tipo}"/>
-                        <DataGridTextColumn Header="Nome" Width="100" Binding="{Binding Nome}"/>
-                        <DataGridTextColumn Header="Valor Media" Width="*" Binding="{Binding ValorDaMedia}"/>
-                        <DataGridTextColumn Header="Media" Width="*" Binding="{Binding Media}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel HorizontalAlignment="Right">
+                    <Label Content="Resumo Geral" HorizontalAlignment="Center"/>
+                    <DataGrid x:Name="DataGridResumoGeral"  Height="400" Width="400" Margin="0,0,10,0" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header ="Descrição" Width="*" Binding="{Binding Descricao}"/>
+                            <DataGridTextColumn Header="Valor" Width="80" Binding="{Binding Valor}"/>
+                            <DataGridTextColumn Header="Data" Width="80" Binding="{Binding Data}"/>
+                            <DataGridTextColumn Header="Tipo" Width="35" Binding="{Binding Tipo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>   
+                
+                <StackPanel HorizontalAlignment="Right">
+                    <Label Content="Resumo Medias" HorizontalAlignment="Center"/>
+                    <DataGrid x:Name="DataGridMedias"  Height="400" Width="400" Margin="0,0,10,0" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header ="Tipo" Width="80" Binding="{Binding Tipo}"/>
+                            <DataGridTextColumn Header="Nome" Width="100" Binding="{Binding Nome}"/>
+                            <DataGridTextColumn Header="Valor Total" Width="*" Binding="{Binding ValorTotal}"/>
+                            <DataGridTextColumn Header="Media" Width="*" Binding="{Binding ValorDaMedia}"/>
+                            <DataGridTextColumn Header="Registros" Width="60" Binding="{Binding qtdRegistros}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

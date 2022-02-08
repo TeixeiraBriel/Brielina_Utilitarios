@@ -27,5 +27,11 @@ namespace BrielinaUtilitarios.Janelas.Financeiro
                 }
             }
         }
+
+        private void funcVoltar(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var destino = new inicio();
+            this.NavigationService.Navigate(destino);
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BrielinaFinanceiro.Entidades;
+using BrielinaUtilitarios.Controladores;
+using Estrutura.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,37 @@ namespace BrielinaUtilitarios.Janelas.Financeiro
     /// </summary>
     public partial class inicio : Page
     {
+        ControladorFinanceiro _controlador;
+        double ValorTotal = 0;
+
         public inicio()
         {
             InitializeComponent();
+
+            _controlador = new ControladorFinanceiro();
+
+            List<Registro> registros = _controlador.buscarRegistros();
+
+            MediaGastos x = new MediaGastos();
+            var Medias = x.criarMedias(registros);
+
+            foreach (var media in Medias)
+            {
+                DataGridMedias.Items.Add(media);
+            }
+
+            foreach (var registro in registros)
+            {/*
+                if (registro.Tipo == 1)
+                {
+                    registro.Valor = registro.Valor * -1;
+                }*/
+                DataGridResumoGeral.Items.Add(registro);
+
+                ValorTotal = ValorTotal + registro.Valor;
+            }
+            DataGridResumoGeral.Items.Add(new Registro { Descricao = "Valor Total", Data = "", Valor=ValorTotal, Tipo = -1 });
+
         }
 
         private void navegaCadastroGastos(object sender, RoutedEventArgs e)

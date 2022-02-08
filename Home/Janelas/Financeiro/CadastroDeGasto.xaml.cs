@@ -96,6 +96,9 @@ namespace BrielinaUtilitarios.Janelas.Financeiro
                 Aviso.Visibility = Visibility.Visible;
                 Aviso.Foreground = Brushes.Green;
                 Aviso.Text = "Registro cadastrado com sucesso";
+
+                var destino = new TabelaGastos();
+                this.NavigationService.Navigate(destino);
             }
             catch
             {
@@ -103,6 +106,12 @@ namespace BrielinaUtilitarios.Janelas.Financeiro
                 Aviso.Foreground = Brushes.Red;
                 Aviso.Text = "Não foi possivel realizar o cadastro, favor validar os campos.";
             }
+        }
+
+        private void funcVoltar(object sender, RoutedEventArgs e)
+        {
+            var destino = new inicio();
+            this.NavigationService.Navigate(destino);
         }
     }
 }

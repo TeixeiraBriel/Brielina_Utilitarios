@@ -10,6 +10,7 @@
 
     <Grid>
         <StackPanel Margin="50,0,0,0">
+            <Button Content="Voltar" Click="funcVoltar" Margin="5,0,5,0" Width="100"/>
             <TextBlock Text="Tabela de entrada" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Filtros ..." FontSize="16" Margin="20,0,0,0" />

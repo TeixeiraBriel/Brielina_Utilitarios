@@ -3,13 +3,60 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BrielinaFinanceiro"
+      xmlns:local="clr-namespace:BrielinaUtilitarios"
       mc:Ignorable="d" 
       d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
       Title="CadastroEntrada">
 
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="55" Margin="239,97,0,0" VerticalAlignment="Top" Width="190"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <TextBlock HorizontalAlignment="Center" Text="Nova Entrada" Margin="12,12,0,0" FontSize="30" FontWeight="bold" Foreground="Red"/>
+
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <TextBlock x:Name="Aviso" HorizontalAlignment="Center" Text="Não foi possivel realizar o cadastro, favor validar os campos." Margin="0,0,0,10" FontSize="10" FontWeight="bold" Foreground="Red" Visibility="Collapsed"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Descricao: " Grid.Column=" 1"/>
+                <TextBox x:Name="txtDescricao" Width="100" Grid.Column=" 2"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" Visibility="Visible">
+                <TextBlock Text="Valor: "/>
+                <TextBox x:Name="txtValor" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock Text="Pagamento Relizado Hoje? " />
+                <RadioButton VerticalAlignment="Center" GroupName="DataDiferente" IsChecked="True" x:Name="DataDiferenteRadio" Checked="DataDiferenteFunc">Sim</RadioButton>
+                <RadioButton VerticalAlignment="Center" GroupName="DataDiferente" IsChecked="False" Checked="DataDiferenteFunc">Nao</RadioButton>
+            </StackPanel>
+            <StackPanel x:Name="DataInseridoPanel" Orientation="Horizontal" Margin="0,5,0,0" Visibility="Collapsed">
+                <TextBlock Text="Data Entrada: "/>
+                <TextBox x:Name="txtDataInserido" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" Visibility="Visible">
+                <TextBlock Text="Grupo: "/>
+                <TextBox x:Name="txtGrupo" Width="100"/>
+            </StackPanel>
+            <StackPanel x:Name="gastoFixoPanel" Orientation="Horizontal" Margin="0,5,0,0" Visibility="Collapsed">
+                <TextBlock Text="Valor pode Alterar?" />
+                <RadioButton VerticalAlignment="Center" GroupName="ValorAltera" IsChecked="False" x:Name="ValorAlteraRadio">Sim</RadioButton>
+                <RadioButton VerticalAlignment="Center" GroupName="ValorAltera" IsChecked="True">Nao</RadioButton>
+            </StackPanel>
+            <StackPanel x:Name="DataVencimentoPanel" Orientation="Horizontal" Margin="0,5,0,0" Visibility="Collapsed">
+                <TextBlock Text="Data Vencimento: "/>
+                <TextBox x:Name="txtDataVencimento" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Cadastrar" Width="100" HorizontalAlignment="Left" Margin="0,5,5,0" Click="CadastrarEntrada"/>
+                <Button Content="Voltar" Width="100" HorizontalAlignment="Left" Margin="0,5,0,0" Click="funcVoltar"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>
