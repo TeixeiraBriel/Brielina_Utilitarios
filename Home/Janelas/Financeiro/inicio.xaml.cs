@@ -43,11 +43,11 @@ namespace BrielinaUtilitarios.Janelas.Financeiro
             }
 
             foreach (var registro in registros)
-            {/*
+            {
                 if (registro.Tipo == 1)
                 {
                     registro.Valor = registro.Valor * -1;
-                }*/
+                }
                 DataGridResumoGeral.Items.Add(registro);
 
                 ValorTotal = ValorTotal + registro.Valor;
