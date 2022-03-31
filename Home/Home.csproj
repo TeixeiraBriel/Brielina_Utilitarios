@@ -27,8 +27,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2202</ApplicationRevision>
-    <ApplicationVersion>2.3.3.2202</ApplicationVersion>
+    <ApplicationRevision>2203</ApplicationRevision>
+    <ApplicationVersion>2.4.0.2203</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
