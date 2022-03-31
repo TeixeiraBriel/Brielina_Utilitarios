@@ -23,5 +23,5 @@ Funcionalidades Para convidados:
 
 Funcionalidades Para admin:
 - [x] Animes
-- [ ] Financeiro
+- [x] Financeiro
 - [x] Steam
