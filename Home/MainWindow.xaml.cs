@@ -17,13 +17,10 @@ namespace Home
         {
             InitializeComponent();
 
-            if (nomeUsuario.Content.ToString() == "Usuario")
-            {
-                nomeUsuario.Content = "Usuario: Geral";
-            }
+            BrielinaUtilitarios.Janelas.Login.inicio LoginInicio = new BrielinaUtilitarios.Janelas.Login.inicio(this);
+            this.janelaPrincipal.NavigationService.Navigate(LoginInicio);
+
             txtVersao.Content = System.Windows.Forms.Application.ProductVersion;
-            Aplicativos inicio = new Aplicativos();
-            this.janelaPrincipal.NavigationService.Navigate(inicio);
             verificaApi();
         }
 

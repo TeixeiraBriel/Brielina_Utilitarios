@@ -1,0 +1,27 @@
+﻿<Page x:Class="BrielinaUtilitarios.Janelas.Login.inicio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrielinaUtilitarios.Janelas.Financeiro"
+      mc:Ignorable="d" 
+      d:DesignHeight="{DynamicResource HeightTotal}" d:DesignWidth="{DynamicResource WidthTotal}"
+      Title="inicio">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5">
+                <TextBlock Text="Login:"/>
+                <TextBox x:Name="inputLogin" Width="200"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10">
+                <TextBlock Text="Senha:"/>
+                <PasswordBox x:Name="inputSenha" Width="200" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Logar" Width="100" Margin="0,0,0,10" Click="ValidaLogin"/>
+                <TextBlock Text="Criar nova Conta..." MouseLeftButtonDown="NavegaCriarConta"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

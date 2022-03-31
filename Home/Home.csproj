@@ -145,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Janelas\Login\inicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Janelas\Rascunho.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,6 +201,9 @@
     </Compile>
     <Compile Include="Janelas\Financeiro\TabelaGastos.xaml.cs">
       <DependentUpon>TabelaGastos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Login\inicio.xaml.cs">
+      <DependentUpon>inicio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Rascunho.xaml.cs">
       <DependentUpon>Rascunho.xaml</DependentUpon>

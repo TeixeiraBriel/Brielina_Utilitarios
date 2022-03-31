@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MouseDown="MoverTela">
+        <Grid Grid.Row="0" MouseDown="MoverTela" x:Name="GridPrincipalCabecalho">
             <Grid.Background>
                 <SolidColorBrush Color="#FF36455D"/>
             </Grid.Background>
@@ -59,7 +59,7 @@
 
             <Label Grid.Column="9" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" x:Name="txtVersao"/>
 
-            <Label x:Name="nomeUsuario" Grid.Column="7" Foreground="White" Content="Usuario" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Label x:Name="nomeUsuario" Grid.Column="7" Foreground="White" Content="Não Logado!" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             
             <Label x:Name="statusApiLabel" Grid.Column="8" Foreground="White" Content="Status API: " VerticalAlignment="Bottom" HorizontalAlignment="Right" MouseLeftButtonDown ="clicaStatusApi" Cursor="Hand"/>
             
@@ -96,7 +96,8 @@
             </Button>
 
 
-            <Button Content="Aplicações" 
+            <Button x:Name="buttonAplicacoes"
+                Content="Aplicações" 
                 Grid.Column="2" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
