@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Controladores\Controlador%28Animes%29.cs" />
     <Compile Include="Controladores\Controlador%28Financeiro%29.cs" />
+    <Compile Include="Controladores\Controlador%28Login%29.cs" />
     <Compile Include="Controladores\Controlador%28SteamJogos%29.cs" />
     <Compile Include="Controladores\Controlador.cs" />
     <Compile Include="Janelas\Animes\CadastrarAnime.xaml.cs">
@@ -235,6 +236,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Dados\FSA.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dados\Usuarios.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Home_TemporaryKey.pfx" />

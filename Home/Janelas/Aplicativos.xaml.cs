@@ -1,4 +1,7 @@
-﻿using Home.Janelas;
+﻿using Home;
+using Home.Janelas;
+using Infraestrutura.Entidades;
+using Infraestrutura.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,31 @@ namespace BrielinaUtilitarios.Janelas
     /// </summary>
     public partial class Aplicativos : Page
     {
-        public Aplicativos()
+        public Aplicativos(Usuario userLogado, MainWindow JanelaPrincipal)
         {
             InitializeComponent();
+            FuncionalidadeAnimes.Visibility = Visibility.Collapsed;
+            FuncionalidadeFinanceiro.Visibility = Visibility.Collapsed;
+            FuncionalidadeSteam.Visibility = Visibility.Collapsed;
+
+            foreach (var funcionalidadeUsuario in userLogado.FuncionalidadesPermitidas.Split(';'))
+            {
+                switch (funcionalidadeUsuario)
+                {
+                    case "0":
+                        var a = Funcionalidades.Animes;
+                        FuncionalidadeAnimes.Visibility = Visibility.Visible;
+                        break;
+                    case "1":
+                        var b = Funcionalidades.Financeiro;
+                        FuncionalidadeFinanceiro.Visibility = Visibility.Visible;
+                        break;
+                    case "2":
+                        var c = Funcionalidades.Steam;
+                        FuncionalidadeSteam.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
         }
 
         private void AnimesApp(object sender, RoutedEventArgs e)

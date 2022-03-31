@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BrielinaUtilitarios.Controladores
 {
-    public class ControladorFinanceiro : Controlador
+    public partial class ControladorFinanceiro : Controlador
     {
         private string _UrlBrielinaApi = ConfigurationManager.AppSettings["UrlBrielinaApi"];
 

@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Home.Controladores
 {
-    public class ControladorAnimes : Controlador
+    public partial class ControladorAnimes : Controlador
     {
         private string _UrlBrielinaApi = ConfigurationManager.AppSettings["UrlBrielinaApi"];
 

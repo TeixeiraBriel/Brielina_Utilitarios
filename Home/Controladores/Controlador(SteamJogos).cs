@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BrielinaUtilitarios.Controladores
 {
-    public class ControladorSteamJogos
+    public partial class ControladorSteamJogos : Controlador
     {
         public OwnedGames minerarDados(string idSteam, bool? jogosGratis)
         {

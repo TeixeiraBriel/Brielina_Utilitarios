@@ -19,7 +19,10 @@
                 <PasswordBox x:Name="inputSenha" Width="200" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Content="Logar" Width="100" Margin="0,0,0,10" Click="ValidaLogin"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Logar" Width="100" Margin="0,0,5,10" Click="ValidaLogin"/>
+                    <Button Content="Convidado" Width="100" Margin="0,0,0,10" Click="entrarConvidado"/>
+                </StackPanel>
                 <TextBlock Text="Criar nova Conta..." MouseLeftButtonDown="NavegaCriarConta"/>
             </StackPanel>
         </StackPanel>

@@ -24,7 +24,8 @@
         
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Content="Aplicativos" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" FontFamily="Unispace"/>
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,10,0,10">
-            <Button Content="Animes" 
+            <Button x:Name="FuncionalidadeAnimes"
+                Content="Animes" 
                 Click="AnimesApp"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
@@ -57,7 +58,8 @@
                 </Button.Template>
             </Button>
 
-            <Button Content="Financeiro" 
+            <Button x:Name="FuncionalidadeFinanceiro"
+                Content="Financeiro" 
                 Click="FinanceiroApp"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
@@ -90,7 +92,8 @@
                 </Button.Template>
             </Button>
 
-            <Button Content="Steam Jogos" 
+            <Button x:Name="FuncionalidadeSteam"
+                Content="Steam Jogos" 
                 Click="SteamJogosApp"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center"

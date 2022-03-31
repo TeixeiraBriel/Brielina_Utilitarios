@@ -1,4 +1,5 @@
-﻿using BrielinaUtilitarios.Janelas;
+﻿using BrielinaUtilitarios.Controladores;
+using BrielinaUtilitarios.Janelas;
 using Home.Controladores;
 using System.Windows;
 using System.Windows.Input;
@@ -12,6 +13,7 @@ namespace Home
     public partial class MainWindow : Window
     {
         private ControladorAnimes _controlador = new ControladorAnimes();
+        public Controlador controladorGeral = new Controlador();
 
         public MainWindow()
         {
@@ -44,7 +46,7 @@ namespace Home
 
         private void NavegarInicio(object sender, RoutedEventArgs e)
         {
-            Aplicativos inicio = new Aplicativos();
+            Aplicativos inicio = new Aplicativos(controladorGeral._usuarioLogado, this);
 
             this.janelaPrincipal.NavigationService.Navigate(inicio);
         }
