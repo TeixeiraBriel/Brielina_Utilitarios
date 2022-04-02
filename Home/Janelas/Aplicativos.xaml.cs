@@ -27,9 +27,6 @@ namespace BrielinaUtilitarios.Janelas
         public Aplicativos(Usuario userLogado, MainWindow JanelaPrincipal)
         {
             InitializeComponent();
-            FuncionalidadeAnimes.Visibility = Visibility.Collapsed;
-            FuncionalidadeFinanceiro.Visibility = Visibility.Collapsed;
-            FuncionalidadeSteam.Visibility = Visibility.Collapsed;
 
             foreach (var funcionalidadeUsuario in userLogado.FuncionalidadesPermitidas.Split(';'))
             {
@@ -96,21 +93,15 @@ namespace BrielinaUtilitarios.Janelas
         {
             if (funcionalidade == Funcionalidades.Animes)
             {
-                Inicio AnimeInicio = new Inicio();
-
-                this.NavigationService.Navigate(AnimeInicio);
+                this.NavigationService.Navigate(new Inicio());
             }
             else if (funcionalidade == Funcionalidades.Financeiro)
             {
-                Financeiro.inicio FinanceiroInicio = new Financeiro.inicio();
-
-                this.NavigationService.Navigate(FinanceiroInicio);
+                this.NavigationService.Navigate(new Financeiro.inicio());
             }
             else if (funcionalidade == Funcionalidades.Steam)
             {
-                SteamJogos.Inicio SteamJogosInicio = new SteamJogos.Inicio();
-
-                this.NavigationService.Navigate(SteamJogosInicio);
+                this.NavigationService.Navigate(new SteamJogos.Inicio());
             }
         }
     }
