@@ -8,8 +8,8 @@ namespace Infraestrutura.Enumeradores
 {
     public enum Funcionalidades
     {
-        Animes = 0,
-        Financeiro = 1,
-        Steam = 2
+        Animes,
+        Financeiro,
+        Steam
     }
 }

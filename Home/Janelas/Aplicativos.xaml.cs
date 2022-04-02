@@ -36,40 +36,82 @@ namespace BrielinaUtilitarios.Janelas
                 switch (funcionalidadeUsuario)
                 {
                     case "0":
-                        var a = Funcionalidades.Animes;
-                        FuncionalidadeAnimes.Visibility = Visibility.Visible;
+                        criarFuncionalidade(Funcionalidades.Animes);
                         break;
                     case "1":
-                        var b = Funcionalidades.Financeiro;
-                        FuncionalidadeFinanceiro.Visibility = Visibility.Visible;
+                        criarFuncionalidade(Funcionalidades.Financeiro);
                         break;
                     case "2":
-                        var c = Funcionalidades.Steam;
-                        FuncionalidadeSteam.Visibility = Visibility.Visible;
+                        criarFuncionalidade(Funcionalidades.Steam);
                         break;
                 }
             }
+
         }
 
-        private void AnimesApp(object sender, RoutedEventArgs e)
+        public void criarFuncionalidade(Funcionalidades funcionalidade)
         {
-            Inicio AnimeInicio = new Inicio();
+            Button novaFuncionalidade = new Button();
+            novaFuncionalidade.Content = funcionalidade.ToString();
+            novaFuncionalidade.Click += (s, e) => NavegaJanela(funcionalidade);
+            novaFuncionalidade.HorizontalAlignment = HorizontalAlignment.Center;
+            novaFuncionalidade.VerticalAlignment = VerticalAlignment.Center;
+            novaFuncionalidade.Margin = new Thickness(0, 15, 0, 0);
 
-            this.NavigationService.Navigate(AnimeInicio);
+            Style estilo = new Style(typeof(Button));
+            estilo.Setters.Add(new Setter(Button.BackgroundProperty, Brushes.White));
+            estilo.Setters.Add(new Setter(Button.ForegroundProperty, Brushes.Black));
+            estilo.Setters.Add(new Setter(Button.FontSizeProperty, 20.0));
+            estilo.Setters.Add(new Setter(Button.CursorProperty, Cursors.Hand));
+
+            Trigger gatilho = new Trigger();
+            gatilho.Property = IsMouseOverProperty;
+            gatilho.Value = true;
+            gatilho.Setters.Add(new Setter(Button.BackgroundProperty, Brushes.Black));
+            gatilho.Setters.Add(new Setter(Button.ForegroundProperty, new SolidColorBrush(Color.FromRgb(54, 69, 93))));
+            
+            estilo.Triggers.Add(gatilho);
+
+            ControlTemplate ct = new ControlTemplate(typeof(Button));
+            FrameworkElementFactory borda = new FrameworkElementFactory(typeof(Border));
+            borda.SetValue(Border.WidthProperty , 120.0);
+            borda.SetValue(Border.HeightProperty, 100.0);
+            borda.SetValue(Border.CornerRadiusProperty, new CornerRadius(12));
+            borda.SetValue(Border.BackgroundProperty, new SolidColorBrush(Color.FromRgb(238,238,238)));
+
+            FrameworkElementFactory contentPresenter = new FrameworkElementFactory(typeof(ContentPresenter));
+            contentPresenter.SetValue(VerticalAlignmentProperty, VerticalAlignment.Center);
+            contentPresenter.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Center);
+
+            ct.VisualTree = borda;
+            borda.AppendChild(contentPresenter);
+
+            novaFuncionalidade.Style = estilo;
+            novaFuncionalidade.Template = ct;
+
+            PainelAplicativos.Children.Add(novaFuncionalidade);
         }
 
-        private void FinanceiroApp(object sender, RoutedEventArgs e)
+        public void NavegaJanela(Funcionalidades funcionalidade)
         {
-            Financeiro.inicio FinanceiroInicio = new Financeiro.inicio();
+            if (funcionalidade == Funcionalidades.Animes)
+            {
+                Inicio AnimeInicio = new Inicio();
 
-            this.NavigationService.Navigate(FinanceiroInicio);
-        }
+                this.NavigationService.Navigate(AnimeInicio);
+            }
+            else if (funcionalidade == Funcionalidades.Financeiro)
+            {
+                Financeiro.inicio FinanceiroInicio = new Financeiro.inicio();
 
-        private void SteamJogosApp(object sender, RoutedEventArgs e)
-        {
-            SteamJogos.Inicio SteamJogosInicio = new SteamJogos.Inicio();
+                this.NavigationService.Navigate(FinanceiroInicio);
+            }
+            else if (funcionalidade == Funcionalidades.Steam)
+            {
+                SteamJogos.Inicio SteamJogosInicio = new SteamJogos.Inicio();
 
-            this.NavigationService.Navigate(SteamJogosInicio);
+                this.NavigationService.Navigate(SteamJogosInicio);
+            }
         }
     }
 }
