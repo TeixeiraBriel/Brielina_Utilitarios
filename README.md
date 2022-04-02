@@ -14,3 +14,23 @@ Para :
 ```
 <add key="UrlBrielinaApi" value="(URL DADA PELA API)"/>
 ```
+
+Logins:
+
+user:convidado <br />
+pass:convidado
+
+
+
+Funcionalidades Para convidados:
+- [x] Animes
+- [ ] Financeiro
+- [x] Steam
+
+user:admin <br />
+pass:admin
+
+Funcionalidades Para admin:
+- [x] Animes
+- [x] Financeiro
+- [x] Steam
