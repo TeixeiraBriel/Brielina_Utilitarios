@@ -1,5 +1,7 @@
 ﻿using BrielinaUtilitarios.Controladores;
 using BrielinaUtilitarios.Janelas;
+using BrielinaUtilitarios.Janelas.Contador;
+using BrielinaUtilitarios.Util;
 using Home.Controladores;
 using Infraestrutura.Enumeradores;
 using System.Windows;
@@ -16,7 +18,6 @@ namespace Home
     {
         private ControladorAnimes _controlador = new ControladorAnimes();
         public Controlador controladorGeral = new Controlador();
-
         public MainWindow()
         {
             InitializeComponent();

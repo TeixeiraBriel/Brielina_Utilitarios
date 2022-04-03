@@ -10,6 +10,7 @@ namespace Infraestrutura.Enumeradores
     {
         Animes,
         Financeiro,
-        Steam
+        Steam,
+        Contador
     }
 }

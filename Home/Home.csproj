@@ -32,6 +32,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,6 +73,12 @@
     <OutputPath>bin\RedeLocal\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=2.0.5.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignColors.2.0.5\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.4.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignThemes.4.4.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -92,15 +100,29 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsBase.4.6.1055.0\lib\WindowsBase.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfAppBar, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAppBar.3.0.0\lib\net45\WpfAppBar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controladores\Controlador%28Contador%29.cs" />
+    <Compile Include="Janelas\Controles\Maximizar.xaml.cs">
+      <DependentUpon>Maximizar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DispatcherUtil.cs" />
+    <Compile Include="Util\Timer.cs" />
     <Page Include="Janelas\Animes\CadastrarAnime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +146,14 @@
     <Page Include="Janelas\Animes\Inicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Contador\JanelaContador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Controles\Maximizar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Janelas\Financeiro\CadastroDeGasto.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +217,9 @@
     </Compile>
     <Compile Include="Janelas\Animes\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Contador\JanelaContador.xaml.cs">
+      <DependentUpon>JanelaContador.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Financeiro\CadastroDeGasto.xaml.cs">
       <DependentUpon>CadastroDeGasto.xaml</DependentUpon>
@@ -277,4 +310,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
 </Project>

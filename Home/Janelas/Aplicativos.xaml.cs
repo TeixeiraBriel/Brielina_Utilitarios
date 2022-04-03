@@ -1,4 +1,6 @@
-﻿using Home;
+﻿using BrielinaUtilitarios.Janelas.Contador;
+using BrielinaUtilitarios.Util;
+using Home;
 using Home.Janelas;
 using Infraestrutura.Entidades;
 using Infraestrutura.Enumeradores;
@@ -24,9 +26,11 @@ namespace BrielinaUtilitarios.Janelas
     /// </summary>
     public partial class Aplicativos : Page
     {
+        MainWindow janelaPrincipal;
         public Aplicativos(Usuario userLogado, MainWindow JanelaPrincipal)
         {
             InitializeComponent();
+            janelaPrincipal = JanelaPrincipal;
 
             foreach (var funcionalidadeUsuario in userLogado.FuncionalidadesPermitidas.Split(';'))
             {
@@ -40,6 +44,9 @@ namespace BrielinaUtilitarios.Janelas
                         break;
                     case "2":
                         criarFuncionalidade(Funcionalidades.Steam);
+                        break;
+                    case "3":
+                        criarFuncionalidade(Funcionalidades.Contador);
                         break;
                 }
             }
@@ -102,6 +109,16 @@ namespace BrielinaUtilitarios.Janelas
             else if (funcionalidade == Funcionalidades.Steam)
             {
                 this.NavigationService.Navigate(new SteamJogos.Inicio());
+            }
+            else if (funcionalidade == Funcionalidades.Contador)
+            {
+                janelaPrincipal.WindowState = WindowState.Minimized;
+                DispatcherUtil.Dispatcher(() =>
+                {
+                    JanelaContador.Inicializa(janelaPrincipal);
+                    JanelaContador.Mostrar();
+                    JanelaContador.Focar();
+                });
             }
         }
     }
