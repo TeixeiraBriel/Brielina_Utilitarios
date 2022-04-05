@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ConnectionString.cs" />
     <Compile Include="Entidades\Anime.cs" />
+    <Compile Include="Entidades\ContadorHistorico.cs" />
     <Compile Include="Entidades\MediaGastos.cs" />
     <Compile Include="Entidades\OwnedGames.cs" />
     <Compile Include="Entidades\registro.cs" />

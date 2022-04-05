@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         xmlns:Controles="clr-namespace:BrielinaUtilitarios.Janelas.Controles" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesignConverters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
         xmlns:local="clr-namespace:BrielinaUtilitarios.Janelas.Contador"
         Title="Contador"
         Height="400"
@@ -17,7 +18,19 @@
         AllowsTransparency="True"
         Topmost="True"
         ShowInTaskbar="true">
-    
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Border x:Name="BordaPrincipal" Background="white" CornerRadius="20,20,20,20" BorderThickness="1" BorderBrush="Black">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -40,8 +53,11 @@
 
             <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.Resources >
                     <Style TargetType="Border" >
@@ -53,12 +69,34 @@
                     <Button Content="Fechar" Click="FecharContador" Width="100" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                    <TextBlock x:Name="TesteCampo" FontSize="30" Text="0 Horas - 0 Minutos - 0 Segundos"/>
-                    <Button Click="PararContador" Content="Pausar Contador" x:Name="TesteButton" Width="100" Height="50" Margin="00,10,0,0"/>
-                    <!--<Button Content="Fechar" Click="FecharContador" Width="100" Margin="00,10,0,0"/>-->
-                </StackPanel>
+                <TextBlock x:Name="JanelaAtiva" FontSize="10" Text="Janela Ativa" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+                <TextBlock x:Name="TesteCampo" FontSize="30" Text="0 Horas - 0 Minutos - 0 Segundos" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
 
+                <Grid Margin="10" Grid.Row="3">
+                    <DataGrid
+                          x:Name="TabelaContador"
+                          CanUserAddRows="False"
+                          SelectionUnit="Cell"
+                          SelectionMode="Extended" />
+                </Grid>
+
+                <StackPanel Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                          Margin="0,0,10,0"
+                          Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                          ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                          x:Name="ZerarContadorBtn"
+                          Click="ZerarContador"
+                          Content="Zerar Contador"
+                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    <Button
+                          Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                          ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                          x:Name="PararContadorBtn"
+                          Click="PararContador"
+                          Content="Pausar Contador"
+                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                </StackPanel>
             </Grid>
             <Controles:Maximizar Grid.ColumnSpan="2" x:Name="Maximilizar" Visibility="Collapsed"/>
         </Grid>
