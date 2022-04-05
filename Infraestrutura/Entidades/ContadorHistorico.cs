@@ -8,7 +8,7 @@ namespace Infraestrutura.Entidades
 {
     public class ContadorHistorico
     {
-        public string janela { get; set; }
         public string tempo { get; set; }
+        public string janela { get; set; }
     }
 }

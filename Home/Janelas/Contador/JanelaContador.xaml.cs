@@ -113,7 +113,8 @@ namespace BrielinaUtilitarios.Janelas.Contador
             }
             if (janelaAtiva != ultimaJanelaAtiva)
             {
-                GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = $"{contadorHoras}:{contadorMinutos}:{contadorSegundos}" });
+                DateTime tempo = new DateTime(2000, 1, 1, contadorMinutos, contadorMinutos, contadorSegundos);
+                GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = tempo.ToString("HH:mm:ss") });
                 ZerarContadorFunc();
                 ultimaJanelaAtiva = janelaAtiva;
             }
@@ -121,13 +122,13 @@ namespace BrielinaUtilitarios.Janelas.Contador
             JanelaAtiva.Text = janelaAtiva;
             contadorSegundos++;
 
-            if (contadorSegundos == 60)
+            if (contadorSegundos >= 60)
             {
                 contadorSegundos = 0;
                 contadorMinutos++;
                 dispatcherTimer.Stop();
             }
-            if (contadorMinutos == 60)
+            if (contadorMinutos >= 60)
             {
                 contadorMinutos = 0;
                 contadorHoras++;
@@ -142,6 +143,16 @@ namespace BrielinaUtilitarios.Janelas.Contador
             contadorHoras = 0;
             TesteCampo.Text = $"{contadorMinutos} Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
         }
+
+        public void ZerarDadosFunc()
+        {
+            List<ContadorHistorico> historicoContador = new List<ContadorHistorico>();
+            string output = JsonConvert.SerializeObject(historicoContador);
+
+            File.WriteAllText(@"Dados\Contador\contadorHistorico.json", output.ToString());
+            preencherTabela(historicoContador);
+        }
+
         private void GravarLinhaJson(ContadorHistorico novaLinha)
         {
             List<ContadorHistorico> historicoContador = new List<ContadorHistorico>();
@@ -188,14 +199,11 @@ namespace BrielinaUtilitarios.Janelas.Contador
                 else
                 {
                     historicoAgrupado.Remove(historicoAgrupado.Find(i => i.janela == atividade.janela));
-                    var tempo = dado.tempo.Split(':');
-                    var tempoNovo = atividade.tempo.Split(':');
-                    tempo[0] = (int.Parse(tempo[0]) + int.Parse(tempoNovo[0])).ToString();
-                    tempo[1] = (int.Parse(tempo[1]) + int.Parse(tempoNovo[1])).ToString();
-                    tempo[2] = (int.Parse(tempo[2]) + int.Parse(tempoNovo[2])).ToString();
+                   
+                    var dadotempo = DateTime.Parse(dado.tempo);
+                    var atividadetempo = DateTime.Parse(atividade.tempo);
 
-                    string tempoAtualizado = $"{tempo[0]}:{tempo[1]}:{tempo[2]}";
-                    dado.tempo = tempoAtualizado;
+                    dado.tempo = new DateTime(2000, 1, 1, dadotempo.Hour + atividadetempo.Hour, dadotempo.Minute + atividadetempo.Minute, dadotempo.Second + atividadetempo.Second).ToString("HH:mm:ss");
 
                     historicoAgrupado.Add(dado);
                 }
@@ -219,7 +227,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
         }
         private void ZerarContador(object sender, RoutedEventArgs e)
         {
-            ZerarContadorFunc();
+            ZerarDadosFunc();
         }
         private void FecharContador(object sender, RoutedEventArgs e)
         {
