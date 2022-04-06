@@ -113,7 +113,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
             }
             if (janelaAtiva != ultimaJanelaAtiva)
             {
-                DateTime tempo = new DateTime(2000, 1, 1, contadorMinutos, contadorMinutos, contadorSegundos);
+                DateTime tempo = new DateTime(2000, 1, 1, contadorHoras, contadorMinutos, contadorSegundos);
                 GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = tempo.ToString("HH:mm:ss") });
                 ZerarContadorFunc();
                 ultimaJanelaAtiva = janelaAtiva;
@@ -140,7 +140,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
             contadorSegundos = 0;
             contadorMinutos = 0;
             contadorHoras = 0;
-            TesteCampo.Text = $"{contadorMinutos} Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
+            TesteCampo.Text = $"{contadorHoras} Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
         }
 
         public void ZerarDadosFunc()
@@ -202,7 +202,33 @@ namespace BrielinaUtilitarios.Janelas.Contador
                     var dadotempo = DateTime.Parse(dado.tempo);
                     var atividadetempo = DateTime.Parse(atividade.tempo);
 
-                    dado.tempo = new DateTime(2000, 1, 1, dadotempo.Hour + atividadetempo.Hour, dadotempo.Minute + atividadetempo.Minute, dadotempo.Second + atividadetempo.Second).ToString("HH:mm:ss");
+                    int newSec = 0;
+                    int newMin = 0;
+                    int newHour = 0;
+
+                    if (dadotempo.Second + atividadetempo.Second >= 60)
+                    {
+                        newSec = (dadotempo.Second + atividadetempo.Second) - 60;
+                        newMin += 1;
+                    }
+                    else
+                    {
+                        newSec += dadotempo.Minute + atividadetempo.Minute;
+
+                    }
+
+                    if (dadotempo.Minute + atividadetempo.Minute >= 60)
+                    {
+                        newMin += (dadotempo.Minute + atividadetempo.Minute) - 60;
+                        newHour += 1;
+                    }
+                    else
+                    {
+                        newMin += dadotempo.Minute + atividadetempo.Minute;
+
+                    }
+
+                    dado.tempo = new DateTime(2000, 1, 1, newHour, newMin, newSec).ToString("HH:mm:ss");
 
                     historicoAgrupado.Add(dado);
                 }
