@@ -126,14 +126,13 @@ namespace BrielinaUtilitarios.Janelas.Contador
             {
                 contadorSegundos = 0;
                 contadorMinutos++;
-                dispatcherTimer.Stop();
             }
             if (contadorMinutos >= 60)
             {
                 contadorMinutos = 0;
                 contadorHoras++;
             }
-            TesteCampo.Text = $"{contadorMinutos} Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
+            TesteCampo.Text = $"{contadorHoras  } Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
         }
 
         public void ZerarContadorFunc()

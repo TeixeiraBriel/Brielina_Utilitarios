@@ -122,7 +122,7 @@
     </ApplicationDefinition>
     <Compile Include="Controladores\Controlador%28Contador%29.cs" />
     <Content Include="Dados\Contador\contadorHistorico.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Janelas\Controles\Maximizar.xaml.cs">
       <DependentUpon>Maximizar.xaml</DependentUpon>
