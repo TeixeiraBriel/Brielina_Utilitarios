@@ -106,33 +106,47 @@ namespace BrielinaUtilitarios.Janelas.Contador
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            var janelaAtiva = _controlador.capturaJanelaAtiva();
-            if (ultimaJanelaAtiva == "")
+            try
             {
-                ultimaJanelaAtiva = janelaAtiva;
-            }
-            if (janelaAtiva != ultimaJanelaAtiva)
-            {
-                DateTime tempo = new DateTime(2000, 1, 1, contadorHoras, contadorMinutos, contadorSegundos);
-                GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = tempo.ToString("HH:mm:ss") });
-                ZerarContadorFunc();
-                ultimaJanelaAtiva = janelaAtiva;
-            }
+                var janelaAtiva = _controlador.capturaJanelaAtiva();
+                if (ultimaJanelaAtiva == "")
+                {
+                    ultimaJanelaAtiva = janelaAtiva;
+                }
+                if (janelaAtiva != ultimaJanelaAtiva)
+                {
+                    DateTime tempo = new DateTime(2000, 1, 1, contadorHoras, contadorMinutos, contadorSegundos);
+                    GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = tempo.ToString("HH:mm:ss") });
+                    ZerarContadorFunc();
+                    ultimaJanelaAtiva = janelaAtiva;
+                }
 
-            JanelaAtiva.Text = janelaAtiva;
-            contadorSegundos++;
+                JanelaAtiva.Text = janelaAtiva;
+                contadorSegundos++;
 
-            if (contadorSegundos >= 60)
-            {
-                contadorSegundos = 0;
-                contadorMinutos++;
+                if (contadorSegundos >= 60)
+                {
+                    contadorSegundos = 0;
+                    contadorMinutos++;
+                }
+                if (contadorMinutos >= 60)
+                {
+                    contadorMinutos = 0;
+                    contadorHoras++;
+                }
+                TesteCampo.Text = $"{contadorHoras  } Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
             }
-            if (contadorMinutos >= 60)
+            catch (Exception ex)
             {
-                contadorMinutos = 0;
-                contadorHoras++;
+                string messageBoxText = ex.Message;
+                string caption = "Erro ao executar";
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result;
+
+                result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+                throw;
             }
-            TesteCampo.Text = $"{contadorHoras  } Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
         }
 
         public void ZerarContadorFunc()
@@ -187,18 +201,19 @@ namespace BrielinaUtilitarios.Janelas.Contador
         public List<ContadorHistorico> agruparAtividades(List<ContadorHistorico> historico)
         {
             List<ContadorHistorico> historicoAgrupado = new List<ContadorHistorico>();
+            var excluir = historico.RemoveAll(i => i.tempo == "00:00:00");
 
             foreach (var atividade in historico)
             {
                 var dado = historicoAgrupado.Find(i => i.janela == atividade.janela);
-                if ( dado == null)
+                if (dado == null)
                 {
                     historicoAgrupado.Add(atividade);
                 }
                 else
                 {
                     historicoAgrupado.Remove(historicoAgrupado.Find(i => i.janela == atividade.janela));
-                   
+
                     var dadotempo = DateTime.Parse(dado.tempo);
                     var atividadetempo = DateTime.Parse(atividade.tempo);
 
@@ -213,7 +228,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
                     }
                     else
                     {
-                        newSec += dadotempo.Minute + atividadetempo.Minute;
+                        newSec += dadotempo.Second + atividadetempo.Second;
 
                     }
 
