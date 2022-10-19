@@ -266,9 +266,11 @@ namespace BrielinaUtilitarios.Janelas.Contador
         private void FecharContador(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
+            GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = contadorData.ToString() });
             this.Close();
-            janelaPrincipal.WindowState = WindowState.Normal;
+
             this.janelaPrincipal.janelaPrincipal.NavigationService.Navigate(new Contador.Inicio());
+            janelaPrincipal.WindowState = WindowState.Normal;
         }
     }
 }
