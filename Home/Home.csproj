@@ -20,17 +20,18 @@
     <PublishUrl>\\25.82.74.248\Publicacoes\BrielinaUtilitarios\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <MinimumRequiredVersion>2.5.6.2210</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2205</ApplicationRevision>
-    <ApplicationVersion>2.5.5.2205</ApplicationVersion>
+    <ApplicationRevision>2210</ApplicationRevision>
+    <ApplicationVersion>2.5.6.2210</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
