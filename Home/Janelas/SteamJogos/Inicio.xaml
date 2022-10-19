@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Inicio">
 
-    <ScrollViewer>
+    <Grid>
         <Grid x:Name="GridPrincipal" Margin="100,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -47,7 +47,13 @@
                     <Button Content="Refresh" Width="80" HorizontalAlignment="Right" Margin="0,0,5,0" Click="RefreshDados" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="PainelJogos" Grid.Row="1"/>
+            
+            <ScrollViewer Grid.Row="1">
+                <StackPanel x:Name="PainelJogos">
+                    
+                </StackPanel>
+            </ScrollViewer>
+
         </Grid>
-    </ScrollViewer>
+    </Grid>
 </Page>

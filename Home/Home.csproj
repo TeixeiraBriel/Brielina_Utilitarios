@@ -30,7 +30,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>2205</ApplicationRevision>
-    <ApplicationVersion>2.5.2.%2a</ApplicationVersion>
+    <ApplicationVersion>2.5.5.2205</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -44,6 +44,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -74,7 +75,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoItX3.Assembly, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a646454c8d475470, processorArchitecture=MSIL">
-      <HintPath>packages\AutoItX.Dotnet.3.3.14.5\lib\AutoItX3.Assembly.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_Dlls\autoit\AutoItX3.Assembly.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.5.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>packages\MaterialDesignColors.2.0.5\lib\net452\MaterialDesignColors.dll</HintPath>
@@ -124,6 +126,9 @@
     <Content Include="Dados\Contador\contadorHistorico.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Janelas\Contador\Inicio.xaml.cs">
+      <DependentUpon>Inicio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Janelas\Controles\Maximizar.xaml.cs">
       <DependentUpon>Maximizar.xaml</DependentUpon>
     </Compile>
@@ -152,6 +157,10 @@
     <Page Include="Janelas\Animes\Inicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Janelas\Contador\Inicio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Janelas\Contador\JanelaContador.xaml">
       <SubType>Designer</SubType>

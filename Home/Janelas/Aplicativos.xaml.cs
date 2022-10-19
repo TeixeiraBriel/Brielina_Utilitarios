@@ -100,7 +100,7 @@ namespace BrielinaUtilitarios.Janelas
         {
             if (funcionalidade == Funcionalidades.Animes)
             {
-                this.NavigationService.Navigate(new Inicio());
+                this.NavigationService.Navigate(new Home.Janelas.Inicio());
             }
             else if (funcionalidade == Funcionalidades.Financeiro)
             {

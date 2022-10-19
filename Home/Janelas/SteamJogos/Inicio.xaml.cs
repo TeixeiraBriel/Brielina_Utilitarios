@@ -112,13 +112,13 @@ namespace BrielinaUtilitarios.Janelas.SteamJogos
             {
                 if (string.IsNullOrEmpty(busca))
                 {
-                    criarLinhas(item.name, converterMinutosHoras(item.playtime_forever));
+                    criarLinhas(item.name, converterMinutosHoras(item.playtime_forever), item.img_icon_url, item.appid.ToString());
                     posicao++;
                     totalJogado = totalJogado + item.playtime_forever;
                 }
                 else if (item.name.ToLower().Contains(busca.ToLower()))
                 {
-                    criarLinhas(item.name, converterMinutosHoras(item.playtime_forever));
+                    criarLinhas(item.name, converterMinutosHoras(item.playtime_forever), item.img_icon_url, item.appid.ToString());
                     posicao++;
                     totalJogado = totalJogado + item.playtime_forever;
                 }
@@ -150,7 +150,7 @@ namespace BrielinaUtilitarios.Janelas.SteamJogos
             return string.Format("{0} Horas", (int)spWorkMin.TotalHours);
         }
 
-        public void criarLinhas(string nomePar, string horasPar)
+        public void criarLinhas(string nomePar, string horasPar, string IconCod, string IdGame)
         {
             Grid myGrid = new Grid();
 
@@ -160,12 +160,22 @@ namespace BrielinaUtilitarios.Janelas.SteamJogos
             ColumnDefinition c2 = new ColumnDefinition();
             c2.Width = new GridLength(0, GridUnitType.Auto);
 
+            ColumnDefinition c3 = new ColumnDefinition();
+            c3.Width = new GridLength(0, GridUnitType.Auto);
 
+            //add img
+            string linkImage = $"https://media.steampowered.com/steamcommunity/public/images/apps/{IdGame}/{IconCod}.jpg";
+            var img = new ImageSourceConverter().ConvertFromString(linkImage) as ImageSource;
+            Image imgAnime = new Image() {Width = 20, Height = 20, Margin = new Thickness(5) };
+            imgAnime.Source = img;
+            Grid.SetColumn(imgAnime, 0);
+
+            // add texto
             TextBlock nome = new TextBlock();
             nome.Text = $"{posicao} - {nomePar}";
             nome.FontSize = 20;
             nome.FontWeight = FontWeights.Bold;
-            Grid.SetColumn(nome, 0);
+            Grid.SetColumn(nome, 1);
 
             // Add the second text cell to the Grid
             TextBlock horas = new TextBlock();
@@ -174,13 +184,15 @@ namespace BrielinaUtilitarios.Janelas.SteamJogos
             horas.FontWeight = FontWeights.Bold;
             horas.Margin = new Thickness(10, 0, 0, 0);
             horas.VerticalAlignment = VerticalAlignment.Center;
-            Grid.SetColumn(horas, 1);
+            Grid.SetColumn(horas, 2);
 
             myGrid.Children.Add(nome);
             myGrid.Children.Add(horas);
+            myGrid.Children.Add(imgAnime);
 
             myGrid.ColumnDefinitions.Add(c1);
             myGrid.ColumnDefinitions.Add(c2);
+            myGrid.ColumnDefinitions.Add(c3);
 
             PainelJogos.Children.Add(myGrid);
         }

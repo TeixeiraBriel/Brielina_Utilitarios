@@ -94,6 +94,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
         public int contadorSegundos = 0;
         public int contadorMinutos = 0;
         public int contadorHoras = 0;
+        public TimeSpan contadorData = new TimeSpan(0, 0, 0);
         private string ultimaJanelaAtiva = "";
         public List<ContadorHistorico> historicos = new List<ContadorHistorico>();
 
@@ -115,26 +116,18 @@ namespace BrielinaUtilitarios.Janelas.Contador
                 }
                 if (janelaAtiva != ultimaJanelaAtiva)
                 {
-                    DateTime tempo = new DateTime(2000, 1, 1, contadorHoras, contadorMinutos, contadorSegundos);
-                    GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = tempo.ToString("HH:mm:ss") });
+                    if (ultimaJanelaAtiva != "Contador")
+                    {
+                        GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = contadorData.ToString() });
+                    }
                     ZerarContadorFunc();
                     ultimaJanelaAtiva = janelaAtiva;
                 }
 
                 JanelaAtiva.Text = janelaAtiva;
-                contadorSegundos++;
+                contadorData += TimeSpan.FromSeconds(1);
 
-                if (contadorSegundos >= 60)
-                {
-                    contadorSegundos = 0;
-                    contadorMinutos++;
-                }
-                if (contadorMinutos >= 60)
-                {
-                    contadorMinutos = 0;
-                    contadorHoras++;
-                }
-                TesteCampo.Text = $"{contadorHoras  } Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
+                TesteCampo.Text = $"{contadorData.Hours} Horas - {contadorData.Minutes} Minutos - {contadorData.Seconds} Segundos";
             }
             catch (Exception ex)
             {
@@ -144,17 +137,18 @@ namespace BrielinaUtilitarios.Janelas.Contador
                 MessageBoxImage icon = MessageBoxImage.Warning;
                 MessageBoxResult result;
 
-                result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-                throw;
+                result = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                dispatcherTimer.Stop();
+                this.Close();
+                janelaPrincipal.WindowState = WindowState.Normal;
             }
         }
 
         public void ZerarContadorFunc()
         {
-            contadorSegundos = 0;
-            contadorMinutos = 0;
-            contadorHoras = 0;
-            TesteCampo.Text = $"{contadorHoras} Horas - {contadorMinutos} Minutos - {contadorSegundos} Segundos";
+            contadorData = new TimeSpan(0, 0, 0);
+            TesteCampo.Text = $"{contadorData.Hours} Horas - {contadorData.Minutes} Minutos - {contadorData.Seconds} Segundos";
         }
 
         public void ZerarDadosFunc()
@@ -274,6 +268,7 @@ namespace BrielinaUtilitarios.Janelas.Contador
             dispatcherTimer.Stop();
             this.Close();
             janelaPrincipal.WindowState = WindowState.Normal;
+            this.janelaPrincipal.janelaPrincipal.NavigationService.Navigate(new Contador.Inicio());
         }
     }
 }
