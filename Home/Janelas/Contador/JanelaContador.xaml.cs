@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
@@ -116,6 +117,9 @@ namespace BrielinaUtilitarios.Janelas.Contador
                 {
                     if (ultimaJanelaAtiva != "Contador")
                     {
+                        if (ultimaJanelaAtiva.Contains("- Google Chrome"))
+                            ultimaJanelaAtiva = "Google Chrome";
+
                         GravarLinhaJson(new ContadorHistorico { janela = ultimaJanelaAtiva, tempo = contadorData.ToString() });
                     }
                     ZerarContadorFunc();
@@ -160,88 +164,40 @@ namespace BrielinaUtilitarios.Janelas.Contador
 
         private void GravarLinhaJson(ContadorHistorico novaLinha)
         {
-            List<ContadorHistorico> historicoContador = new List<ContadorHistorico>();
-
             var file = @"Dados\Contador\contadorHistorico.json";
             List<ContadorHistorico> data = JsonConvert.DeserializeObject<List<ContadorHistorico>>(File.ReadAllText(file, Encoding.UTF8));
 
-            try
+            var linha = data.FirstOrDefault(x => x.janela == novaLinha.janela);
+            if (linha == null)
             {
-                foreach (var dado in data)
-                {
-                    historicoContador.Add(dado);
-                }
+                data.Add(novaLinha);
             }
-            catch
+            else
             {
-                historicoContador.Add(novaLinha);
+                var numerosAntigos = linha.tempo.Split(':');
+                var numerosNovos = novaLinha.tempo.Split(':');
+
+                TimeSpan novoTempo = new TimeSpan();
+                novoTempo += TimeSpan.FromSeconds(double.Parse(numerosAntigos[2]));   
+                novoTempo += TimeSpan.FromSeconds(double.Parse(numerosNovos[2]));
+                novoTempo += TimeSpan.FromMinutes(double.Parse(numerosAntigos[1]));
+                novoTempo += TimeSpan.FromMinutes(double.Parse(numerosNovos[1]));
+                novoTempo += TimeSpan.FromHours(double.Parse(numerosAntigos[0]));
+                novoTempo += TimeSpan.FromHours(double.Parse(numerosNovos[0]));
+
+                linha.tempo = novoTempo.ToString();
             }
+            
 
-            historicoContador.Add(novaLinha);
-
-            string output = JsonConvert.SerializeObject(historicoContador);
+            string output = JsonConvert.SerializeObject(data);
 
             File.WriteAllText(@"Dados\Contador\contadorHistorico.json", output.ToString());
-            preencherTabela(historicoContador);
+            preencherTabela(data);
         }
 
         public void preencherTabela(List<ContadorHistorico> historico)
         {
-            TabelaContador.ItemsSource = agruparAtividades(historico);
-        }
-
-        public List<ContadorHistorico> agruparAtividades(List<ContadorHistorico> historico)
-        {
-            List<ContadorHistorico> historicoAgrupado = new List<ContadorHistorico>();
-            var excluir = historico.RemoveAll(i => i.tempo == "00:00:00");
-
-            foreach (var atividade in historico)
-            {
-                var dado = historicoAgrupado.Find(i => i.janela == atividade.janela);
-                if (dado == null)
-                {
-                    historicoAgrupado.Add(atividade);
-                }
-                else
-                {
-                    historicoAgrupado.Remove(historicoAgrupado.Find(i => i.janela == atividade.janela));
-
-                    var dadotempo = DateTime.Parse(dado.tempo);
-                    var atividadetempo = DateTime.Parse(atividade.tempo);
-
-                    int newSec = 0;
-                    int newMin = 0;
-                    int newHour = 0;
-
-                    if (dadotempo.Second + atividadetempo.Second >= 60)
-                    {
-                        newSec = (dadotempo.Second + atividadetempo.Second) - 60;
-                        newMin += 1;
-                    }
-                    else
-                    {
-                        newSec += dadotempo.Second + atividadetempo.Second;
-
-                    }
-
-                    if (dadotempo.Minute + atividadetempo.Minute >= 60)
-                    {
-                        newMin += (dadotempo.Minute + atividadetempo.Minute) - 60;
-                        newHour += 1;
-                    }
-                    else
-                    {
-                        newMin += dadotempo.Minute + atividadetempo.Minute;
-
-                    }
-
-                    dado.tempo = new DateTime(2000, 1, 1, newHour, newMin, newSec).ToString("HH:mm:ss");
-
-                    historicoAgrupado.Add(dado);
-                }
-            }
-
-            return historicoAgrupado;
+            TabelaContador.ItemsSource = historico;
         }
 
         private void PararContador(object sender, RoutedEventArgs e)
