@@ -65,8 +65,9 @@
                     </Style>
                 </Grid.Resources>
 
-                <StackPanel Grid.Row="0">
-                    <Button Content="Fechar" Click="FecharContador" Width="100" />
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Fechar" Click="FecharContador" Width="100" Margin="2"/>
+                    <CheckBox x:Name="Sobrepor" Content="Sobrepor" IsChecked="False" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="2" Click="MudarVisibilidade"/>
                 </StackPanel>
 
                 <TextBlock x:Name="JanelaAtiva" FontSize="10" Text="Janela Ativa" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>

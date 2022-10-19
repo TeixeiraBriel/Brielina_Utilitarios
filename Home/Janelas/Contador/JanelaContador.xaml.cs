@@ -63,11 +63,9 @@ namespace BrielinaUtilitarios.Janelas.Contador
                     Maximilizar.FechaModal();
                     BordaPrincipal.Background = branco;
                     BordaPrincipal.BorderBrush = fillSeparator;
-                    Timer.Inicia();
                 }
                 else
                 {
-                    Timer.Para();
                     ChangeSizeWindow(30, 100);
                     AtualizaEstado();
                     Maximilizar.AbreModal();
@@ -271,6 +269,17 @@ namespace BrielinaUtilitarios.Janelas.Contador
 
             this.janelaPrincipal.janelaPrincipal.NavigationService.Navigate(new Contador.Inicio());
             janelaPrincipal.WindowState = WindowState.Normal;
+        }
+
+        private void MudarVisibilidade(object sender, RoutedEventArgs e)
+        {
+            bool resposta = Sobrepor.IsChecked == true ? true : false;
+            if (resposta)
+                Sobrepor.Content = "Sobrepondo";
+            else
+                Sobrepor.Content = "Escondendo";
+
+            this.Topmost = resposta;
         }
     }
 }
