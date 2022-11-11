@@ -25,10 +25,9 @@ namespace BrielinaUtilitarios.Controladores
 
         public OwnedGames minerarPerfil(string idSteam)
         {
-            var client = new RestClient($"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=94FADF560260531F6AEDF05CD43EEC9B&steamids={idSteam}");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
+            var client = new RestClient($"https://api.steampowered.com/");
+            var request = new RestRequest("ISteamUser/GetPlayerSummaries/v0002/?key=94FADF560260531F6AEDF05CD43EEC9B&steamids={idSteam}", Method.Get);
+            var response = client.Execute(request);
 
             OwnedGames resposta = JsonConvert.DeserializeObject<OwnedGames>(response.Content);
             return resposta;
@@ -36,10 +35,10 @@ namespace BrielinaUtilitarios.Controladores
 
         private OwnedGames req(string idSteam, bool? jogosGratis)
         {
-            var client = new RestClient($"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=94FADF560260531F6AEDF05CD43EEC9B&steamid={idSteam}&include_appinfo=true&include_played_free_games={jogosGratis}&format=json");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
+            var client = new RestClient($"http://api.steampowered.com/");
+            var request = new RestRequest("IPlayerService/GetOwnedGames/v0001/?key=94FADF560260531F6AEDF05CD43EEC9B&steamid={idSteam}&include_appinfo=true&include_played_free_games={jogosGratis}&format=json" ,
+                Method.Get);
+            var response = client.Execute(request);
 
             OwnedGames resposta = JsonConvert.DeserializeObject<OwnedGames>(response.Content);
             return resposta;
