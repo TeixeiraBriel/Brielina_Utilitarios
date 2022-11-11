@@ -22,14 +22,14 @@ namespace Home.Janelas
         {
             var destino = new CadastrarAnime(JanelaPrincipal);
 
-            this.NavigationService.Navigate(destino);
+            CineHubPainelPrincipal.NavigationService.Navigate(destino);
         }
 
         private void navegaTabelas(object sender, RoutedEventArgs e)
         {
             var destino = new TabelaAnimes(JanelaPrincipal);
 
-            this.NavigationService.Navigate(destino); 
+            CineHubPainelPrincipal.NavigationService.Navigate(destino); 
         }
     }
 }

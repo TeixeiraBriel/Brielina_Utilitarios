@@ -9,11 +9,15 @@
       Title="Inicio">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" MinWidth="300" MinHeight="300" Height="450" Width="800">
-            <TextBlock FontSize="50" FontWeight="Medium" FontFamily="Helvetica" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Animes" VerticalAlignment="Center"/>
-            <Button Content="Tabela" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Margin="0,5,0,0" Click="navegaTabelas"/>
-            <Button x:Name="btnCadastro" Content="Cadastrar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Margin="0,5,0,0" Click="navegaCadastro"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0">
+            <Button Content="Buscar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Margin="0,5,0,0" Click="navegaTabelas"/>
+            <Button Content="Minha Lista" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Margin="0,5,0,0" Click="navegaTabelas"/>
+            <Button x:Name="btnCadastro" Content="Novo Cine" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="50" Margin="0,5,0,0" Click="navegaCadastro"/>
         </StackPanel>
-
+        <Frame x:Name="CineHubPainelPrincipal" Grid.Column="1" Width="1190" Height="750"/>
     </Grid>
 </Page>
