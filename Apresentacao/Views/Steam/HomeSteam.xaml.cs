@@ -19,6 +19,7 @@ public partial class HomeSteam : ContentPage
     async void atribuiListaJogos()
     {
         listaJogos = await Dependencias.SteamService.minerarDados("76561198124348532");
+
         foreach (var item in listaJogos.response.games.OrderByDescending(i => i.playtime_forever))
         {
             TabelaSection.Add(
