@@ -9,6 +9,7 @@ namespace InjecaoDependencias
 {
     public sealed class Resolvedor : IResolvedor
     {
+        //corrigir
         private readonly IUnityContainer _container;
 
         [SuppressMessage("Microsoft.Maintainability","CA1506:AvoidExcessiveClassCoupling", Justification = "O resolvedor é a classe aonde fica o 'acomplamento' da aplicação")]
