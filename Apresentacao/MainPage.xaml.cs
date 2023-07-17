@@ -1,21 +1,24 @@
-﻿using Apresentacao.Controladores;
-using Apresentacao.Views.Steam;
+﻿using Apresentacao.Views.Steam;
+using Dominio.Servicos;
+using Infraestrutura.Servicos;
 
 namespace Apresentacao
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        ISteamService _steamService;
 
-        public MainPage()
+        public MainPage(ISteamService steamService)
         {
             InitializeComponent();
-            new ControladorInicializa().Inicializa();
+            _steamService = steamService;
         }
 
         private void NavigateSteam(object sender, EventArgs e)
         {
-            this.Navigation.PushAsync(new HomeSteam());
+            App.Current.MainPage.Navigation.PushModalAsync(new HomeSteam(_steamService));
+            //Navigation.PushAsync();
         }
     }
 }

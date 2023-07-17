@@ -28,6 +28,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -61,14 +62,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Dominio\Dominio.csproj" />
-	  <ProjectReference Include="..\InjecaoDependencias\InjecaoDependencias.csproj" />
+	  <ProjectReference Include="..\InjecaoDependencia\InjecaoDependencia.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Steam\HomeSteam.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
+	</ItemGroup>  
 </Project>

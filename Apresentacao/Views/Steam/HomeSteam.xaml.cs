@@ -1,7 +1,5 @@
 using Dominio.Entidades;
-using Dominio.InjecaoDependencias;
 using Dominio.Servicos;
-using Microsoft.Maui.Controls;
 
 namespace Apresentacao.Views.Steam;
 
@@ -9,27 +7,34 @@ public partial class HomeSteam : ContentPage
 {
     int totalJogado = 0;
     OwnedGames listaJogos;
+    ISteamService _steamService;
 
-    public HomeSteam()
+    public HomeSteam(ISteamService steamService)
     {
         InitializeComponent();
+        _steamService = steamService;
         atribuiListaJogos();
     }
 
     async void atribuiListaJogos()
     {
-        listaJogos = await Dependencias.SteamService.minerarDados("76561198124348532");
-
+        int count = 1;
+        listaJogos = await _steamService.minerarDados("76561198124348532");
+        
+        TabelaSection.Clear();
         foreach (var item in listaJogos.response.games.OrderByDescending(i => i.playtime_forever))
         {
+            string linkImg = $"https://media.steampowered.com/steamcommunity/public/images/apps/{item.appid.ToString()}/{item.img_icon_url}.jpg";
+
             TabelaSection.Add(
             new ImageCell()
             {
-                Text = item.name,
+                Text = count + " - " + item.name,
                 Detail = converterMinutosHoras(item.playtime_forever),
-                ImageSource = item.img_icon_url
+                ImageSource = linkImg
             });
 
+            count++;
             totalJogado = totalJogado + item.playtime_forever;
         }
     }

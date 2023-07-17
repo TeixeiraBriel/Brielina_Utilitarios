@@ -1,12 +1,16 @@
-﻿namespace Apresentacao
+﻿using Apresentacao.Views.Steam;
+using Dominio.Servicos;
+using Infraestrutura.Servicos;
+
+namespace Apresentacao
 {
     public partial class App : Application
     {
-        public App()
+        public App(HomeSteam mainpage)
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = mainpage;
         }
     }
 }

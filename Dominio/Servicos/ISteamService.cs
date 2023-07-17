@@ -1,5 +1,4 @@
 ﻿using Dominio.Entidades;
-using System.Threading.Tasks;
 
 namespace Dominio.Servicos
 {

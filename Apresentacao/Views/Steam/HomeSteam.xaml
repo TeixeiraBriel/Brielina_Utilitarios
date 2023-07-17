@@ -3,11 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Apresentacao.Views.Steam.HomeSteam"
              Title="HomeSteam">
-    <VerticalStackLayout>
-        <Label 
-            Text="Steam Home"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Text="Jogos BielGt:"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+            FontSize="18"
+            HorizontalOptions="CenterAndExpand" 
+            VerticalOptions="CenterAndExpand"/>
 
         <TableView 
             Grid.Row="1"
@@ -19,5 +29,5 @@
                 </TableSection>
             </TableRoot>
         </TableView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

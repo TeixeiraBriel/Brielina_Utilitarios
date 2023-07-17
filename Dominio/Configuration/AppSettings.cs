@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.InjecaoDependencias
+namespace Dominio.Configuration
 {
-    public interface IResolvedor
+    public class AppSettings
     {
-        T Resolve<T>();
-
-        void Singleton<T>(T obj);
+        public string Version { get; set; }
     }
 }
