@@ -10,6 +10,7 @@ namespace InjecaoDependencias
         public Bootstrapper(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<ISteamService, SteamService>();
+            services.AddSingleton<IMetasService, MetasService>();
         }
     }
 }

@@ -1,0 +1,64 @@
+﻿@page "/MetasPage"
+
+@using Apresentacao.Components
+@using Dominio.Interfaces.Servicos;
+@using Dominio.Entidades;
+@inject IMetasService MetasService
+
+<h1>Metas</h1>
+
+<p>Buscar suas metas.</p>
+
+<!-- Botão para abrir o popup -->
+<button class="btn btn-primary" @onclick="AlternarEstadoPopUp">Alternar Estado PopUp</button>
+
+<!-- Renderiza o popup quando a variável de controle estiver true -->
+@if (mostrarPopup)
+{
+    <CadastroMetaPopUp />
+}
+
+@if (_Metas == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>DataInicio</th>
+                <th>DataFim</th>
+                <th>DiasExecutados</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Meta in _Metas.Objetivos)
+            {
+                <tr>
+                    <td>@Meta.Nome</td>
+                    <td>@Meta.DataInicio.ToString("dd/mm/yyyy")</td>
+                    <td>@Meta.DataFim.ToString("dd/mm/yyyy")</td>
+                    <td>@Meta.DiasExecutados.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Metas _Metas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _Metas = await MetasService.BuscarMetas();
+    }
+
+    private bool mostrarPopup = false;
+
+    private void AlternarEstadoPopUp()
+    {
+        mostrarPopup = !mostrarPopup;
+    }
+}

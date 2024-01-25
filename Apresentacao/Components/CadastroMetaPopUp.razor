@@ -1,0 +1,35 @@
+﻿@using Dominio.Entidades;
+@using Dominio.Interfaces.Servicos;
+@inject IMetasService MetasService
+
+<div class="popup-container">
+    <label for="nome">Nome:</label>
+    <input id="nome" @bind="Nome" />
+
+    <label for="dataInicio">Data Início:</label>
+    <input id="dataInicio" @bind="DataInicio" type="date" />
+
+    <label for="dataFim">Data Fim:</label>
+    <input id="dataFim" @bind="DataFim" type="date" />
+
+    <button @onclick="SalvarCadastro">Salvar</button>
+</div>
+
+@code {
+    private string Nome { get; set; }
+    private DateTime DataInicio { get; set; }
+    private DateTime DataFim { get; set; }
+
+    private void SalvarCadastro()
+    {
+        Meta meta = new Meta()
+            {
+                Nome = Nome,
+                DataInicio = DataInicio,
+                DataFim = DataFim,
+                DiasExecutados = new List<DateTime>()
+            };
+
+        MetasService.CriarMeta(meta);
+    }
+}
