@@ -1,13 +1,14 @@
 ﻿@page "/fetchdata"
 
-@using Apresentacao.Data
-@inject WeatherForecastService ForecastService
+@using Dominio.Entidades;
+@using Dominio.Interfaces.Servicos;
+@inject ISteamService SteamService
 
-<h1>Weather forecast</h1>
+<h1>Jogos Steam de @PlayerName</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>Voce tem o total de @QtdJogos jogos na steam com um total de @HorasSomadas jogadas.</p>
 
-@if (forecasts == null)
+@if (_Jogos == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -16,20 +17,18 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th></th>
+                <th>Nome</th>
+                <th>Tempo Jogado</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+           @foreach (var game in _Jogos.games)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td><img src="@game.caminho_imagem"/></td>
+                    <td>@game.name</td>
+                    <td>@game.tempo_jogado</td>
                 </tr>
             }
         </tbody>
@@ -37,10 +36,19 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private Jogos _Jogos;
+    private string PlayerName;
+    private string HorasSomadas;
+    private int QtdJogos;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        PlayerName = "BielGt";
+        _Jogos = await SteamService.minerarDados("76561198124348532");
+        _Jogos.games = _Jogos.games.OrderByDescending(x => x.playtime_forever).ToList();
+
+        int horasTotais = _Jogos.games.Sum(x => x.playtime_forever);
+        HorasSomadas = Game.converterMinutosHoras(horasTotais);
+        QtdJogos = _Jogos.game_count;
     }
 }

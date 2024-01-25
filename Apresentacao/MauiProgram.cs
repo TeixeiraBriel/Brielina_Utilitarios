@@ -1,4 +1,4 @@
-﻿using Apresentacao.Data;
+﻿using InjecaoDependencias;
 using Microsoft.Extensions.Logging;
 
 namespace Apresentacao
@@ -8,6 +8,9 @@ namespace Apresentacao
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            var services = builder.Services;
+            var configuration = builder.Configuration;
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -15,14 +18,14 @@ namespace Apresentacao
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
 
+            _ = new Bootstrapper(services, configuration);
+
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
-
-            builder.Services.AddSingleton<WeatherForecastService>();
 
             return builder.Build();
         }
