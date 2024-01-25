@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{48DB02EC-90F5-4763-BE4C-31B47D319CA1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InjecaoDependencias", "InjecaoDependencias\InjecaoDependencias.csproj", "{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestrutura", "Infraestrutura\Infraestrutura.csproj", "{B97EA55D-31DE-4855-AE42-7BB378020956}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apresentacao", "Apresentacao\Apresentacao.csproj", "{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,30 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Hamachi|Any CPU.ActiveCfg = Debug|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Hamachi|Any CPU.Build.0 = Debug|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.RedeLocal|Any CPU.ActiveCfg = Release|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.RedeLocal|Any CPU.Build.0 = Release|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48DB02EC-90F5-4763-BE4C-31B47D319CA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Hamachi|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Hamachi|Any CPU.Build.0 = Debug|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.RedeLocal|Any CPU.ActiveCfg = Release|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.RedeLocal|Any CPU.Build.0 = Release|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD11F862-B00C-4E08-9CB2-3461AFCEF9D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Hamachi|Any CPU.ActiveCfg = Debug|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Hamachi|Any CPU.Build.0 = Debug|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.RedeLocal|Any CPU.ActiveCfg = Release|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.RedeLocal|Any CPU.Build.0 = Release|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B97EA55D-31DE-4855-AE42-7BB378020956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Hamachi|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Hamachi|Any CPU.Build.0 = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Hamachi|Any CPU.Deploy.0 = Debug|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.RedeLocal|Any CPU.ActiveCfg = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.RedeLocal|Any CPU.Build.0 = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.RedeLocal|Any CPU.Deploy.0 = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80F3FFD-A550-40B3-B9E9-B614B6F8A0BB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
